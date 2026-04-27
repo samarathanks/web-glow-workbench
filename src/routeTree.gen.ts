@@ -9,8 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProspeccaoRouteImport } from './routes/prospeccao'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as PlanosRouteImport } from './routes/planos'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as EntregamosRouteImport } from './routes/entregamos'
+import { Route as DnaRouteImport } from './routes/dna'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ProspeccaoRoute = ProspeccaoRouteImport.update({
+  id: '/prospeccao',
+  path: '/prospeccao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanosRoute = PlanosRouteImport.update({
+  id: '/planos',
+  path: '/planos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntregamosRoute = EntregamosRouteImport.update({
+  id: '/entregamos',
+  path: '/entregamos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DnaRoute = DnaRouteImport.update({
+  id: '/dna',
+  path: '/dna',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +61,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/dna': typeof DnaRoute
+  '/entregamos': typeof EntregamosRoute
+  '/faq': typeof FaqRoute
+  '/planos': typeof PlanosRoute
+  '/portfolio': typeof PortfolioRoute
+  '/prospeccao': typeof ProspeccaoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/dna': typeof DnaRoute
+  '/entregamos': typeof EntregamosRoute
+  '/faq': typeof FaqRoute
+  '/planos': typeof PlanosRoute
+  '/portfolio': typeof PortfolioRoute
+  '/prospeccao': typeof ProspeccaoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/dna': typeof DnaRoute
+  '/entregamos': typeof EntregamosRoute
+  '/faq': typeof FaqRoute
+  '/planos': typeof PlanosRoute
+  '/portfolio': typeof PortfolioRoute
+  '/prospeccao': typeof ProspeccaoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contato'
+    | '/dna'
+    | '/entregamos'
+    | '/faq'
+    | '/planos'
+    | '/portfolio'
+    | '/prospeccao'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contato'
+    | '/dna'
+    | '/entregamos'
+    | '/faq'
+    | '/planos'
+    | '/portfolio'
+    | '/prospeccao'
+  id:
+    | '__root__'
+    | '/'
+    | '/contato'
+    | '/dna'
+    | '/entregamos'
+    | '/faq'
+    | '/planos'
+    | '/portfolio'
+    | '/prospeccao'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContatoRoute: typeof ContatoRoute
+  DnaRoute: typeof DnaRoute
+  EntregamosRoute: typeof EntregamosRoute
+  FaqRoute: typeof FaqRoute
+  PlanosRoute: typeof PlanosRoute
+  PortfolioRoute: typeof PortfolioRoute
+  ProspeccaoRoute: typeof ProspeccaoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/prospeccao': {
+      id: '/prospeccao'
+      path: '/prospeccao'
+      fullPath: '/prospeccao'
+      preLoaderRoute: typeof ProspeccaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planos': {
+      id: '/planos'
+      path: '/planos'
+      fullPath: '/planos'
+      preLoaderRoute: typeof PlanosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entregamos': {
+      id: '/entregamos'
+      path: '/entregamos'
+      fullPath: '/entregamos'
+      preLoaderRoute: typeof EntregamosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dna': {
+      id: '/dna'
+      path: '/dna'
+      fullPath: '/dna'
+      preLoaderRoute: typeof DnaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +197,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContatoRoute: ContatoRoute,
+  DnaRoute: DnaRoute,
+  EntregamosRoute: EntregamosRoute,
+  FaqRoute: FaqRoute,
+  PlanosRoute: PlanosRoute,
+  PortfolioRoute: PortfolioRoute,
+  ProspeccaoRoute: ProspeccaoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
