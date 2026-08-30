@@ -8,71 +8,86 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Kapptar" },
-      { name: "description", content: "Entre em contato com a Kapptar e descubra como acelerar suas vendas B2B." },
-      { property: "og:title", content: "Contato — Kapptar" },
-      { property: "og:description", content: "Fale com um especialista em prospecção corporativa." },
+      { title: "Diagnóstico gratuito — Kapptar" },
+      {
+        name: "description",
+        content:
+          "Solicite um diagnóstico gratuito e entenda qual é o próximo passo da sua operação comercial: organizar, gerar ou delegar.",
+      },
+      { property: "og:title", content: "Solicitar diagnóstico gratuito — Kapptar" },
+      {
+        property: "og:description",
+        content: "Conte onde sua operação comercial está hoje. Nós indicamos o próximo passo.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: ContatoPage,
+  component: DiagnosticoPage,
 });
 
-function ContatoPage() {
+const desafios = [
+  "Organizar o processo comercial",
+  "Gerar oportunidades com prospecção",
+  "Delegar a qualificação de leads",
+  "Ainda não sei — quero entender",
+];
+
+const cenarios = [
+  "Não temos processo definido",
+  "Temos processo, mas falta previsibilidade",
+  "Temos processo e queremos escalar",
+];
+
+function DiagnosticoPage() {
   const [sending, setSending] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setSending(true);
     setTimeout(() => {
       setSending(false);
-      toast.success("Mensagem enviada! Entraremos em contato em breve.");
-      (e.target as HTMLFormElement).reset();
+      toast.success("Solicitação enviada. Entraremos em contato para agendar o diagnóstico.");
+      form.reset();
     }, 800);
   };
 
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Entre em Contato"
-        title="Vamos conversar sobre o seu funil."
-        description="Preencha o formulário ou fale direto via WhatsApp. Respondemos em até 1 dia útil."
+        eyebrow="Diagnóstico gratuito"
+        title="Vamos entender onde sua operação comercial está hoje."
+        description="Uma conversa para ler o cenário, o processo e o objetivo — e indicar qual é o próximo passo mais adequado."
       />
 
-      <section className="pb-32">
+      <section className="pb-24">
         <div className="container mx-auto px-6 grid lg:grid-cols-3 gap-8 max-w-6xl">
           <div className="lg:col-span-2 p-8 md:p-10 rounded-3xl glass">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid md:grid-cols-2 gap-5">
-                <Field label="Empresa" name="empresa" required />
                 <Field label="Nome completo" name="nome" required />
+                <Field label="Empresa" name="empresa" required />
               </div>
               <div className="grid md:grid-cols-2 gap-5">
-                <Select label="Cargo" name="cargo" options={["CEO", "Diretor", "Gerente", "Outro"]} />
+                <Field label="Cargo" name="cargo" />
                 <Field label="Email corporativo" name="email" type="email" required />
               </div>
-              <Field label="Telefone / WhatsApp" name="telefone" required />
+              <div className="grid md:grid-cols-2 gap-5">
+                <Field label="WhatsApp" name="whatsapp" required />
+                <Field label="Site da empresa" name="site" />
+              </div>
 
-              <Select
-                label="Tem interesse em"
-                name="interesse"
-                options={[
-                  "Qualificação",
-                  "Prospecção com agendamento de visita",
-                  "Reativação de clientes",
-                  "Conhecer melhor",
-                ]}
-              />
-
-              <Select
-                label="Quando precisa iniciar?"
-                name="prazo"
-                options={["O mais rápido possível", "Daqui 2 meses", "+ de 2 meses"]}
-              />
+              <Select label="Principal desafio hoje" name="desafio" options={desafios} />
+              <Select label="Como está sua operação comercial" name="cenario" options={cenarios} />
 
               <div>
-                <label className="block text-sm text-muted-foreground mb-2">Mensagem</label>
+                <label htmlFor="contexto" className="block text-sm text-muted-foreground mb-2">
+                  Conte um pouco do contexto
+                </label>
                 <textarea
-                  name="mensagem"
+                  id="contexto"
+                  name="contexto"
                   rows={4}
                   className="w-full rounded-xl bg-background border border-border px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-teal/50 transition"
                 />
@@ -83,12 +98,23 @@ function ContatoPage() {
                 disabled={sending}
                 className="w-full px-7 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-brand shadow-glow hover:opacity-90 disabled:opacity-50 transition inline-flex items-center justify-center gap-2"
               >
-                <Send size={18} /> {sending ? "Enviando..." : "Enviar mensagem"}
+                <Send size={18} /> {sending ? "Enviando..." : "Solicitar diagnóstico gratuito"}
               </button>
+              <p className="text-xs text-muted-foreground text-center">
+                Sem compromisso. Usamos as informações apenas para preparar a conversa.
+              </p>
             </form>
           </div>
 
           <div className="space-y-4">
+            <div className="rounded-2xl glass p-6">
+              <h2 className="font-display text-lg font-bold">Como funciona</h2>
+              <ol className="mt-4 space-y-3 text-sm text-muted-foreground">
+                <li>1. Você envia o contexto da sua operação.</li>
+                <li>2. Agendamos uma conversa de diagnóstico.</li>
+                <li>3. Indicamos o próximo passo: organizar, gerar ou delegar.</li>
+              </ol>
+            </div>
             <ContactCard
               icon={Phone}
               label="WhatsApp"
@@ -127,10 +153,11 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-sm text-muted-foreground mb-2">
+      <label htmlFor={name} className="block text-sm text-muted-foreground mb-2">
         {label} {required && <span className="text-teal">*</span>}
       </label>
       <input
+        id={name}
         name={name}
         type={type}
         required={required}
@@ -143,8 +170,11 @@ function Field({
 function Select({ label, name, options }: { label: string; name: string; options: string[] }) {
   return (
     <div>
-      <label className="block text-sm text-muted-foreground mb-2">{label}</label>
+      <label htmlFor={name} className="block text-sm text-muted-foreground mb-2">
+        {label}
+      </label>
       <select
+        id={name}
         name={name}
         className="w-full rounded-xl bg-background border border-border px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-teal/50 transition"
       >
@@ -178,9 +208,7 @@ function ContactCard({
         <Icon size={18} className="text-primary-foreground" />
       </div>
       <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
-      <div className="font-display font-semibold mt-1 group-hover:text-teal transition">
-        {value}
-      </div>
+      <div className="font-display font-semibold mt-1 group-hover:text-teal transition">{value}</div>
     </a>
   );
 }
