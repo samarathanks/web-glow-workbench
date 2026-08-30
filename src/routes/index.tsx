@@ -115,7 +115,7 @@ function HomePage() {
   return (
     <SiteLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden pt-20 pb-20 md:pt-28 md:pb-28">
+      <section className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-mesh opacity-60" aria-hidden />
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.14]"
@@ -127,73 +127,42 @@ function HomePage() {
             maskImage: "radial-gradient(ellipse at 50% 0%, black, transparent 70%)",
           }}
         />
-        <div className="container mx-auto px-6 max-w-5xl text-center relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[11px] uppercase tracking-[0.24em] text-muted-foreground mb-8">
-            <span className="w-2 h-2 rounded-full bg-teal" /> Inteligência comercial aplicada
+        <div className="container mx-auto px-6 max-w-4xl text-center relative">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[11px] uppercase tracking-[0.24em] text-muted-foreground mb-6">
+            <span className="w-2 h-2 rounded-full bg-teal" /> Kapptar | Sales Tech
           </div>
 
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.04] tracking-tight text-balance">
-            O próximo passo da sua operação comercial{" "}
-            <span className="text-gradient">começa aqui</span>.
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.08] tracking-tight text-balance">
+            Processo, prospecção e IA para operações comerciais que{" "}
+            <span className="text-gradient">precisam avançar</span>.
           </h1>
 
-          <p className="mt-8 text-base md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Organizamos o processo, geramos oportunidades e delegamos a qualificação para que sua
-            equipe avance com mais clareza.
+          <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            A Kapptar estrutura operações comerciais, gera oportunidades B2B e implanta agentes de IA
+            para qualificação, follow-up e organização do CRM.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryCTA />
             <SecondaryCTA to="/" hash="solucoes">
-              Conheça nossas soluções
+              Encontre a solução ideal
             </SecondaryCTA>
-          </div>
-
-          <div className="mt-16 grid gap-3 sm:grid-cols-3 max-w-3xl mx-auto text-left">
-            {[
-              { k: "Organizar", v: "o processo" },
-              { k: "Gerar", v: "oportunidades" },
-              { k: "Delegar", v: "a qualificação" },
-            ].map((i) => (
-              <div key={i.k} className="rounded-2xl glass px-6 py-5">
-                <div className="text-xs uppercase tracking-[0.2em] text-teal font-semibold">
-                  {i.k}
-                </div>
-                <div className="font-display text-lg font-semibold mt-1">{i.v}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* DIAGNÓSTICO */}
-      <Section
-        id="diagnostico"
-        eyebrow="Diagnóstico"
-        align="center"
-        title="Onde sua operação comercial perde oportunidades hoje?"
-        description="Cada estágio exige uma resposta diferente. Identifique o que limita o avanço da sua equipe e conheça o caminho mais adequado para evoluir."
-      >
-        <div className="grid gap-5 sm:grid-cols-2">
-          {provocacoes.map((p) => (
-            <div key={p.title} className="rounded-2xl glass p-7 transition hover:border-teal/40">
-              <h3 className="font-display text-lg font-bold leading-snug">{p.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* SOLUÇÕES */}
+      {/* DIAGNÓSTICO + SOLUÇÕES */}
       <Section
         id="solucoes"
-        eyebrow="Soluções"
+        eyebrow="Diagnóstico"
         align="center"
-        title="Três soluções. Um próximo passo por vez."
+        title="O que impede sua operação comercial de avançar?"
+        description="Selecione o cenário que mais se aproxima da sua empresa."
         className="bg-surface/40"
       >
-        <SolutionCards />
+        <ScenarioSelector />
       </Section>
+
 
       {/* TRAJETÓRIA */}
       <Section
