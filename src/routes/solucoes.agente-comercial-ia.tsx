@@ -1,13 +1,15 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Check, X } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Section } from "@/components/site/Section";
-import { Comparison } from "@/components/site/Comparison";
 import { Faq } from "@/components/site/Faq";
-import { Steps, Highlight, BulletGrid } from "@/components/site/Steps";
+import { BulletGrid, Highlight } from "@/components/site/Steps";
+import { JourneyLine } from "@/components/site/JourneyLine";
+import { Reveal } from "@/components/site/Reveal";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { PrimaryCTA } from "@/components/site/CTAButton";
+import { MessageSquare, Compass, Filter, Database, RefreshCw, BellRing, BarChart3 } from "lucide-react";
 
 export const Route = createFileRoute("/solucoes/agente-comercial-ia")({
   head: () => ({
@@ -16,10 +18,13 @@ export const Route = createFileRoute("/solucoes/agente-comercial-ia")({
       {
         name: "description",
         content:
-          "Um agente de IA com persona, processo e critérios próprios para qualificar leads no WhatsApp, atualizar o CRM, fazer follow-up e acionar sua equipe.",
+          "Um agente com a persona, o processo e os critérios da sua operação para qualificar leads, atualizar o CRM, fazer follow-up e acionar o vendedor.",
       },
       { property: "og:title", content: "Agente Comercial de IA — Kapptar" },
-      { property: "og:description", content: "O agente qualifica. Pessoas vendem." },
+      {
+        property: "og:description",
+        content: "Não é um agente genérico. É o agente da sua operação. O agente qualifica. Pessoas vendem.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -27,168 +32,152 @@ export const Route = createFileRoute("/solucoes/agente-comercial-ia")({
   component: AgentePage,
 });
 
+const quando = [
+  { title: "Leads chegando sem triagem", desc: "O time gasta tempo com contatos sem aderência." },
+  { title: "Follow-up inconsistente", desc: "O lead esfria antes do segundo contato." },
+  { title: "CRM desatualizado", desc: "As informações não são registradas durante o atendimento." },
+  { title: "Processo comercial definido", desc: "Existem critérios claros para o agente aplicar." },
+];
+
+const funcoes = [
+  { icon: MessageSquare, label: "Recebe o lead pelo WhatsApp" },
+  { icon: Compass, label: "Identifica a origem" },
+  { icon: Filter, label: "Qualifica" },
+  { icon: Database, label: "Atualiza o CRM" },
+  { icon: RefreshCw, label: "Faz follow-up" },
+  { icon: BellRing, label: "Notifica ou agenda" },
+  { icon: BarChart3, label: "Alimenta o dashboard" },
+];
+
 const pode = [
-  "Receber o lead pelo WhatsApp",
-  "Identificar se a origem foi orgânica, Google ou Facebook",
-  "Aplicar perguntas e critérios de qualificação",
-  "Registrar e atualizar os dados no CRM",
-  "Fazer follow-up conforme as regras definidas no kickoff",
-  "Notificar o vendedor",
-  "Notificar o grupo definido com CEO ou gestor",
-  "Verificar disponibilidade",
-  "Agendar uma reunião quando aplicável",
-  "Alimentar o dashboard",
+  { title: "Atender e qualificar", desc: "Conduz a conversa aplicando os critérios da sua operação." },
+  { title: "Registrar e organizar", desc: "Atualiza o CRM e mantém o histórico com contexto." },
+  { title: "Retomar contatos", desc: "Executa follow-up conforme a cadência definida." },
+  { title: "Acionar a equipe", desc: "Notifica o vendedor ou agenda a reunião quando há aderência." },
 ];
 
-const naoFaz = [
-  "Pesquisar empresas",
-  "Construir listas",
-  "Executar Outbound B2B",
-  "Apresentar propostas",
-  "Negociar",
-  "Fechar vendas",
-  "Substituir o vendedor",
-  "Criar sozinho um processo comercial inexistente",
-];
-
-const aplicacoes = [
-  { title: "Qualificação de novos leads", desc: "Primeiro atendimento com critérios definidos." },
-  { title: "Follow-up", desc: "Retomada de conversas conforme as regras acordadas." },
-  { title: "Agendamento e passagem", desc: "Verificação de disponibilidade e acionamento da equipe." },
-  { title: "Reativação de bases", desc: "Contato com contatos antigos dentro do processo definido." },
-  { title: "Apoio a Customer Success", desc: "Organização de interações e registro de informações." },
-];
-
-const comparativo = [
-  {
-    area: "Primeiro atendimento",
-    today: "Lead aguarda resposta e esfria antes do contato.",
-    kapptar: "Atendimento imediato no WhatsApp com critérios definidos.",
-  },
-  {
-    area: "Qualificação",
-    today: "Tempo da equipe consumido por contatos sem aderência.",
-    kapptar: "Leads qualificados antes da atuação do vendedor.",
-  },
-  {
-    area: "Follow-up",
-    today: "Retomadas dependem da memória de cada vendedor.",
-    kapptar: "Follow-up executado conforme as regras acordadas.",
-  },
-  {
-    area: "Dados",
-    today: "CRM incompleto e decisões por percepção.",
-    kapptar: "Registro atualizado e dashboard alimentado.",
-  },
-  {
-    area: "Equipe",
-    today: "Pessoas presas à rotina e ao retrabalho.",
-    kapptar: "Mais foco em relacionamento, proposta e fechamento.",
-  },
+const naoPode = [
+  { title: "Negociar condições", desc: "Preço, desconto e contrato permanecem com pessoas." },
+  { title: "Fechar a venda", desc: "A decisão comercial não é delegada ao agente." },
+  { title: "Substituir o processo", desc: "Sem critérios definidos, não há o que o agente aplique." },
+  { title: "Assumir a relação", desc: "O relacionamento com o cliente continua sendo humano." },
 ];
 
 const etapas = [
-  { label: "Diagnóstico", desc: "Leitura do processo, dos critérios e das responsabilidades já existentes." },
-  { label: "Configuração", desc: "Persona, fluxos, perguntas, regras de follow-up, integrações com WhatsApp e CRM." },
-  { label: "Operação", desc: "Acompanhamento das conversas, análise dos dados e ajustes contínuos." },
+  { title: "Diagnóstico", desc: "Entendimento do fluxo de leads, critérios e ferramentas." },
+  { title: "Desenho do agente", desc: "Persona, roteiro, critérios de qualificação e limites." },
+  { title: "Implantação", desc: "Integração com WhatsApp, CRM e acionamento da equipe." },
+  { title: "Acompanhamento", desc: "Análise das conversas e ajustes de critério e abordagem." },
 ];
 
 const faq = [
   {
-    q: "O agente substitui meu vendedor?",
-    a: "Não. O agente qualifica, registra e aciona. Apresentação, negociação e fechamento permanecem com a equipe responsável pela venda.",
+    q: "É um chatbot com respostas prontas?",
+    a: "Não. O agente é configurado com a persona, o processo e os critérios da sua operação, e atua dentro dos limites definidos no escopo.",
   },
   {
     q: "Preciso ter processo comercial definido?",
-    a: "Sim. O agente opera sobre etapas, critérios e responsabilidades existentes. Quando isso ainda não existe, o primeiro produto indicado é a Estruturação Comercial.",
+    a: "Sim. O agente aplica critérios existentes. Se ainda não houver processo, começamos pela Estruturação Comercial.",
   },
   {
-    q: "Com quais ferramentas o agente trabalha?",
-    a: "WhatsApp e CRM. Outras necessidades são avaliadas no diagnóstico antes de qualquer definição.",
-  },
-  {
-    q: "O agente faz prospecção?",
-    a: "Não. Pesquisa de contas e abordagem ativa são escopo do Outbound B2B.",
+    q: "O agente conversa com o cliente sem supervisão?",
+    a: "O agente conduz a triagem e o follow-up. As conversas ficam registradas e a equipe assume quando há aderência.",
   },
 ];
 
 function AgentePage() {
+  const [tab, setTab] = useState<"pode" | "naoPode">("pode");
+
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Delegar · Agente Comercial de IA"
-        title="Um agente comercial de IA criado para a sua operação."
-        description="Com identidade, processo e critérios próprios para qualificar leads no WhatsApp, atualizar o CRM, fazer follow-up e acionar sua equipe."
+        eyebrow="Delegar"
+        title="Agente Comercial de IA"
+        description="Não é um agente genérico. É o agente da sua operação: qualifica, atualiza o CRM, acompanha o lead e aciona o vendedor."
       >
         <PrimaryCTA />
       </PageHero>
 
-      <Section align="center">
-        <Highlight>Não é um agente genérico. É o agente da sua operação.</Highlight>
+      <Section eyebrow="Quando faz sentido" title="Quando esta solução faz sentido">
+        <Reveal>
+          <BulletGrid items={quando} columns={2} />
+        </Reveal>
       </Section>
 
-      <Section eyebrow="Pré-requisito" title="O agente opera sobre um processo definido." className="bg-surface/40">
-        <div className="rounded-3xl glass p-8 md:p-10">
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            O agente precisa de um processo comercial definido. Quando etapas, critérios e
-            responsabilidades ainda não existem, o primeiro produto indicado é a{" "}
-            <Link to="/solucoes/estruturacao-comercial" className="text-teal font-semibold hover:underline">
-              Estruturação Comercial
-            </Link>
-            .
-          </p>
-        </div>
-      </Section>
+      <Section eyebrow="Entregas" title="O que a Kapptar entrega" className="bg-surface/40">
+        <Reveal>
+          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {funcoes.map((f, i) => (
+              <li
+                key={f.label}
+                className="flex items-center gap-3 rounded-2xl glass p-5 transition duration-300 hover:border-teal/40"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-brand shadow-glow">
+                  <f.icon size={18} className="text-primary-foreground" />
+                </span>
+                <span className="text-sm">
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-teal font-semibold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {f.label}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
 
-      <Section eyebrow="O que o agente faz" title="Capacidades e limites">
-        <div className="grid gap-5 lg:grid-cols-2">
-          <div className="rounded-3xl glass p-8">
-            <h3 className="font-display text-lg font-bold">O agente pode</h3>
-            <ul className="mt-5 space-y-3">
-              {pode.map((p) => (
-                <li key={p} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
-                  <Check size={17} className="mt-0.5 shrink-0 text-teal" aria-hidden /> {p}
-                </li>
-              ))}
-            </ul>
+        <div className="mt-10">
+          <div className="flex gap-2" role="tablist" aria-label="Limites do agente">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={tab === "pode"}
+              onClick={() => setTab("pode")}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition duration-300 ${
+                tab === "pode" ? "bg-gradient-brand text-primary-foreground" : "glass text-muted-foreground"
+              }`}
+            >
+              O agente pode
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={tab === "naoPode"}
+              onClick={() => setTab("naoPode")}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition duration-300 ${
+                tab === "naoPode" ? "bg-gradient-brand text-primary-foreground" : "glass text-muted-foreground"
+              }`}
+            >
+              O agente não pode
+            </button>
           </div>
-          <div className="rounded-3xl glass p-8">
-            <h3 className="font-display text-lg font-bold">O agente não</h3>
-            <ul className="mt-5 space-y-3">
-              {naoFaz.map((p) => (
-                <li key={p} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
-                  <X size={17} className="mt-0.5 shrink-0 text-violet" aria-hidden /> {p}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-sm text-foreground font-semibold">O agente qualifica. Pessoas vendem.</p>
+          <div className="mt-5">
+            <BulletGrid items={tab === "pode" ? pode : naoPode} columns={2} />
           </div>
         </div>
-        <div className="mt-5 rounded-2xl glass p-6">
-          <h3 className="font-display text-base font-bold">Integrações</h3>
-          <p className="mt-2 text-sm text-muted-foreground">WhatsApp e CRM.</p>
+
+        <div className="mt-10">
+          <Highlight>O agente qualifica. Pessoas vendem.</Highlight>
         </div>
       </Section>
 
-      <Section eyebrow="Aplicações" title="Onde o agente atua" className="bg-surface/40">
-        <BulletGrid items={aplicacoes} />
+      <Section eyebrow="Como funciona" title="Como funciona">
+        <Reveal>
+          <JourneyLine steps={etapas} />
+        </Reveal>
+        <p className="mt-8 text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
+          O agente precisa de um processo comercial definido para funcionar: ele aplica os critérios,
+          as etapas e os limites da sua operação.
+        </p>
       </Section>
 
-      <Section eyebrow="Comparativo" title="Hoje e com a Kapptar">
-        <Comparison rows={comparativo} />
-      </Section>
-
-      <Section eyebrow="Como entregamos" title="Diagnóstico, configuração e operação" className="bg-surface/40">
-        <Steps steps={etapas} />
-      </Section>
-
-      <Section eyebrow="Perguntas frequentes" title="Dúvidas sobre o Agente Comercial de IA" narrow>
+      <Section eyebrow="Perguntas frequentes" title="Dúvidas comuns" narrow className="bg-surface/40">
         <Faq items={faq} />
       </Section>
 
       <FinalCTA
-        title="Pronto para delegar a qualificação?"
-        description="Solicite um diagnóstico gratuito e avalie se o agente é o próximo passo da sua operação."
+        title="Sua equipe perde tempo na qualificação?"
+        description="No diagnóstico gratuito avaliamos o fluxo de leads e o que pode ser delegado ao agente."
       />
     </SiteLayout>
   );

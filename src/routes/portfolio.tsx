@@ -2,6 +2,6 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/portfolio")({
   beforeLoad: () => {
-    throw redirect({ to: "/", hash: "trajetoria" });
+    throw redirect({ to: "/", hash: "autoridade" });
   },
 });

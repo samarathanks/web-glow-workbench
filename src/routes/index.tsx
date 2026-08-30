@@ -2,26 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Section } from "@/components/site/Section";
 import { ScenarioSelector } from "@/components/site/ScenarioSelector";
-import { Comparison } from "@/components/site/Comparison";
+import { BrandMarquee } from "@/components/site/BrandMarquee";
+import { JourneyLine } from "@/components/site/JourneyLine";
+import { Reveal } from "@/components/site/Reveal";
 import { Faq } from "@/components/site/Faq";
-import { Steps, Highlight } from "@/components/site/Steps";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { PrimaryCTA, SecondaryCTA } from "@/components/site/CTAButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kapptar — Sales Tech de inteligência comercial aplicada" },
+      { title: "Kapptar — Sales Tech: processo, prospecção e IA comercial" },
       {
         name: "description",
         content:
-          "Organizar o processo, gerar oportunidades e delegar a qualificação: estruturação comercial, outbound B2B e agente comercial de IA.",
+          "Estruturação comercial, outbound B2B e agente comercial de IA para operações que precisam organizar o processo, gerar oportunidades ou delegar a qualificação.",
       },
-      { property: "og:title", content: "Kapptar — Inteligência comercial aplicada" },
+      { property: "og:title", content: "Kapptar — Sales Tech de inteligência comercial aplicada" },
       {
         property: "og:description",
         content:
-          "O próximo passo da sua operação comercial começa aqui. Solicite um diagnóstico gratuito.",
+          "Processo, prospecção e IA para operações comerciais que precisam avançar. Solicite um diagnóstico gratuito.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -30,85 +31,63 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-
-const comparativo = [
+const etapas = [
   {
-    area: "Processo",
-    today: "Conhecimento disperso e execução sem padrão.",
-    kapptar: "Etapas, papéis, critérios e rotina definidos.",
+    title: "Diagnóstico",
+    desc: "Entendemos o cenário, o objetivo e o estágio da operação.",
   },
   {
-    area: "Geração de oportunidades",
-    today: "Dependência de indicação, demanda espontânea ou ações isoladas.",
-    kapptar: "Prospecção orientada por ICP e contexto.",
+    title: "Escopo",
+    desc: "Definimos solução, responsabilidades, limites e entregas.",
   },
   {
-    area: "Qualificação",
-    today: "Tempo da equipe consumido por contatos sem aderência.",
-    kapptar: "Leads qualificados antes da atuação do vendedor.",
+    title: "Implantação",
+    desc: "Configuramos o processo e colocamos a operação para funcionar.",
   },
   {
-    area: "Dados",
-    today: "CRM incompleto e decisões por percepção.",
-    kapptar: "Informações registradas e operação analisável.",
-  },
-  {
-    area: "Equipe",
-    today: "Pessoas presas à rotina e ao retrabalho.",
-    kapptar: "Mais foco em relacionamento, proposta e fechamento.",
+    title: "Acompanhamento",
+    desc: "Analisamos a execução e direcionamos os ajustes necessários.",
   },
 ];
 
-const metodo = [
+const diferenciais = [
   {
-    label: "Entender",
-    title: "Ler a operação",
-    desc: "Cenário, processo, equipe, dados e pontos de perda.",
+    title: "Diagnóstico antes da solução",
+    desc: "Não indicamos o mesmo produto para todas as empresas. Primeiro entendemos onde a operação perde capacidade.",
   },
   {
-    label: "Desenhar",
-    title: "Definir o próximo passo",
-    desc: "Função, fluxos, critérios, responsabilidades e entregas.",
+    title: "Execução aplicada",
+    desc: "Não entregamos apenas recomendações. Estruturamos, prospectamos ou implantamos conforme o escopo contratado.",
   },
   {
-    label: "Executar e evoluir",
-    title: "Colocar para funcionar",
-    desc: "Implantação acompanhada, dados analisados e ajustes contínuos.",
+    title: "Tecnologia sem perder o humano",
+    desc: "A tecnologia assume processos e rotinas. Pessoas permanecem responsáveis por relacionamento, negociação e decisão.",
   },
-];
-
-const marcas = [
-  "TOTVS", "Onfly", "Pluxee", "Ibyte", "Accesstage", "SPX Bank", "Swile", "Systêxtil",
-  "Gooroo Crédito", "Bullla", "Evol Soluções", "Certacon", "AG Capital", "Creditas", "Neon", "ITAG",
 ];
 
 const faq = [
   {
-    q: "Qual solução é indicada para a minha empresa?",
-    a: "Depende do estágio da operação. O diagnóstico identifica se o primeiro desafio é organizar o processo, gerar oportunidades ou delegar a qualificação.",
+    q: "Qual solução é indicada para minha empresa?",
+    a: "Depende do estágio da operação. O diagnóstico identifica se o primeiro passo é organizar o processo, gerar oportunidades ou delegar a qualificação.",
   },
   {
     q: "Preciso contratar as três soluções?",
-    a: "Não. Cada produto pode ser contratado separadamente. Quando fizer sentido, eles podem formar uma jornada evolutiva.",
+    a: "Não. Cada solução pode ser contratada separadamente e, quando fizer sentido, elas se complementam ao longo da evolução da operação.",
   },
   {
-    q: "As soluções substituem minha equipe comercial?",
-    a: "Não. A Kapptar organiza, prospecta ou qualifica conforme o escopo. Apresentação, negociação e fechamento permanecem com a equipe responsável pela venda.",
-  },
-  {
-    q: "Minha empresa precisa ter CRM?",
-    a: "O CRM é importante para dar continuidade, contexto e qualidade aos dados. A necessidade de implantação ou ajuste será avaliada no diagnóstico.",
+    q: "A Kapptar substitui minha equipe comercial?",
+    a: "Não. Estruturamos, prospectamos ou qualificamos conforme o escopo. Apresentação, negociação e fechamento permanecem com a sua equipe.",
   },
   {
     q: "Como começamos?",
-    a: "Com um diagnóstico gratuito para entender o cenário, o objetivo e o produto mais aderente ao momento da empresa.",
+    a: "Com um diagnóstico gratuito para entender o cenário, o objetivo e qual solução é mais aderente ao momento da empresa.",
   },
 ];
 
 function HomePage() {
   return (
     <SiteLayout>
-      {/* HERO */}
+      {/* 1. HERO */}
       <section className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-mesh opacity-60" aria-hidden />
         <div
@@ -126,7 +105,7 @@ function HomePage() {
             <span className="w-2 h-2 rounded-full bg-teal" /> Kapptar | Sales Tech
           </div>
 
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.08] tracking-tight text-balance">
+          <h1 className="font-display text-3xl md:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] tracking-tight text-balance">
             Processo, prospecção e IA para operações comerciais que{" "}
             <span className="text-gradient">precisam avançar</span>.
           </h1>
@@ -145,89 +124,83 @@ function HomePage() {
         </div>
       </section>
 
-      {/* DIAGNÓSTICO + SOLUÇÕES */}
+      {/* 2. SELETOR DE CENÁRIO E SOLUÇÃO */}
       <Section
         id="solucoes"
-        eyebrow="Diagnóstico"
+        eyebrow="Organizar → Gerar → Delegar"
         align="center"
         title="O que impede sua operação comercial de avançar?"
         description="Selecione o cenário que mais se aproxima da sua empresa."
         className="bg-surface/40"
       >
-        <ScenarioSelector />
+        <Reveal>
+          <ScenarioSelector />
+        </Reveal>
       </Section>
 
-
-      {/* TRAJETÓRIA */}
+      {/* 3. AUTORIDADE */}
       <Section
-        id="trajetoria"
-        eyebrow="Trajetória"
+        id="autoridade"
+        eyebrow="Autoridade"
         align="center"
-        title="Marcas que fazem parte da nossa trajetória."
-        description="Experiências construídas em diferentes projetos, soluções e momentos da história da Kapptar."
+        title="Autoridade construída na prática."
+        description="A experiência da Kapptar foi construída em diferentes operações, mercados e desafios comerciais B2B."
       >
-        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px overflow-hidden rounded-3xl border border-border bg-border">
-          {marcas.map((m) => (
-            <li
-              key={m}
-              className="flex items-center justify-center bg-background px-4 py-8 text-center text-sm md:text-base font-display font-semibold text-muted-foreground"
-            >
-              {m}
-            </li>
-          ))}
-        </ul>
+        <Reveal>
+          <h3 className="text-center text-xs uppercase tracking-[0.22em] text-teal font-semibold mb-8">
+            Marcas que fazem parte da nossa trajetória.
+          </h3>
+          <BrandMarquee />
+        </Reveal>
       </Section>
 
-      {/* CASES */}
+      {/* 4. DA NECESSIDADE À OPERAÇÃO */}
       <Section
-        id="cases"
-        eyebrow="Cases"
+        id="como-funciona"
+        eyebrow="Contratação"
         align="center"
-        title="Quem trocou o improviso por previsibilidade."
-        description="Operações comerciais reais, estruturadas com o método Kapptar."
-      >
-        <p className="text-center text-sm text-muted-foreground">
-          Processo, prospecção e inteligência aplicados a operações B2B.
-        </p>
-      </Section>
-
-      {/* COMPARATIVO */}
-      <Section
-        id="comparativo"
-        eyebrow="Comparativo"
-        align="center"
-        title="Da improvisação a uma operação que sabe como avançar."
+        title="Da necessidade à operação."
+        description="Cada projeto começa com um diagnóstico e avança com escopo, responsabilidades e entregas claramente definidos."
         className="bg-surface/40"
       >
-        <Comparison rows={comparativo} />
+        <Reveal>
+          <JourneyLine steps={etapas} />
+        </Reveal>
       </Section>
 
-      {/* MÉTODO */}
+      {/* 5. DIFERENCIAIS */}
       <Section
-        id="metodo"
-        eyebrow="Método"
+        id="diferenciais"
+        eyebrow="Diferenciais"
         align="center"
-        title="Método e DNA Kapptar"
-        description="A solução começa pelo contexto da empresa — não pela ferramenta."
+        title="Inteligência comercial com função e responsabilidade."
       >
-        <Steps steps={metodo} />
-        <div className="mt-10">
-          <Highlight>
-            Método para organizar. Experiência para executar. Inteligência para evoluir.
-          </Highlight>
-          <p className="mt-6 text-center text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Entendemos antes de propor, simplificamos para executar, usamos dados para direcionar e
-            aplicamos tecnologia com função e responsabilidade.
-          </p>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {diferenciais.map((d, i) => (
+            <Reveal key={d.title} delay={i * 80}>
+              <div className="h-full rounded-3xl glass p-7 transition duration-300 hover:border-teal/40 hover:-translate-y-1">
+                <h3 className="font-display text-lg font-bold leading-snug">{d.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </Section>
 
-      {/* FAQ */}
-      <Section id="faq" eyebrow="Perguntas frequentes" align="center" title="Dúvidas comuns" narrow>
+      {/* 6. FAQ */}
+      <Section
+        id="faq"
+        eyebrow="Perguntas frequentes"
+        align="center"
+        title="Dúvidas comuns"
+        narrow
+        className="bg-surface/40"
+      >
         <Faq items={faq} />
       </Section>
 
-      <FinalCTA />
+      {/* 7. CTA FINAL */}
+      <FinalCTA description="Conte onde sua empresa está hoje. A Kapptar identifica a solução mais adequada para organizar, gerar ou delegar." />
     </SiteLayout>
   );
 }

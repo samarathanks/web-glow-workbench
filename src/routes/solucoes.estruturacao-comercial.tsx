@@ -2,9 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Section } from "@/components/site/Section";
-import { Comparison } from "@/components/site/Comparison";
 import { Faq } from "@/components/site/Faq";
-import { Steps, Highlight, BulletGrid } from "@/components/site/Steps";
+import { BulletGrid } from "@/components/site/Steps";
+import { JourneyLine } from "@/components/site/JourneyLine";
+import { Reveal } from "@/components/site/Reveal";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { PrimaryCTA } from "@/components/site/CTAButton";
 
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/solucoes/estruturacao-comercial")({
       {
         name: "description",
         content:
-          "Processo, funil, papéis, critérios, CRM e indicadores definidos para sua operação comercial sair da improvisação.",
+          "ICP, processo, funil, papéis, CRM, indicadores e rotina de gestão definidos para a sua operação comercial funcionar com padrão.",
       },
       { property: "og:title", content: "Estruturação Comercial — Kapptar" },
       {
@@ -29,82 +30,41 @@ export const Route = createFileRoute("/solucoes/estruturacao-comercial")({
   component: EstruturacaoPage,
 });
 
-const paraQuem = [
-  { title: "Operação sem processo padronizado", desc: "Cada vendedor conduz a venda de um jeito diferente." },
-  { title: "Gestão sem indicadores", desc: "Decisões tomadas por percepção, sem dados confiáveis." },
+const quando = [
+  { title: "Cada vendedor vende de um jeito", desc: "Não há etapas, critérios ou padrão de condução." },
   { title: "CRM subutilizado", desc: "Registros incompletos e histórico sem contexto." },
-  { title: "Equipe crescendo", desc: "Novas pessoas sem uma rotina clara para seguir." },
-];
-
-const porque = [
-  { title: "Previsibilidade", desc: "Etapas e critérios permitem enxergar o funil e o próximo passo." },
-  { title: "Consistência", desc: "A boa prática deixa de ser individual e passa a ser da operação." },
-  { title: "Escala", desc: "Novos vendedores entram em uma estrutura já definida." },
-];
-
-const comparativo = [
-  {
-    area: "Processo",
-    today: "Conhecimento disperso e execução sem padrão.",
-    kapptar: "Etapas, papéis, critérios e rotina definidos.",
-  },
-  {
-    area: "Gestão",
-    today: "Acompanhamento por percepção e conversas soltas.",
-    kapptar: "Rotina de gestão com indicadores e pontos de controle.",
-  },
-  {
-    area: "Dados",
-    today: "CRM incompleto e decisões por percepção.",
-    kapptar: "Informações registradas e operação analisável.",
-  },
-  {
-    area: "Equipe",
-    today: "Pessoas presas à rotina e ao retrabalho.",
-    kapptar: "Mais foco em relacionamento, proposta e fechamento.",
-  },
-];
-
-const frentes = [
-  { title: "Mercado e ICP", desc: "Definição de mercado-alvo, perfil de cliente ideal e critérios de aderência." },
-  { title: "Proposta e abordagem", desc: "Argumentação, diferenciais e mensagem alinhada ao contexto do cliente." },
-  { title: "Processo e funil", desc: "Etapas, gatilhos de avanço e critérios de qualificação." },
-  { title: "Papéis e rotina", desc: "Responsabilidades, cadências e ritos de gestão." },
-  { title: "CRM e dados", desc: "Campos, funis, registros e organização das informações." },
-  { title: "Indicadores", desc: "O que medir em cada etapa e como interpretar os números." },
-];
-
-const etapas = [
-  { label: "Diagnóstico", desc: "Leitura da operação atual: cenário, processo, equipe, dados e pontos de perda." },
-  { label: "Desenho", desc: "Definição de processo, funil, papéis, critérios, CRM e indicadores." },
-  { label: "Implantação", desc: "Aplicação acompanhada, ajustes na rotina e evolução com base nos dados." },
+  { title: "Gestão por percepção", desc: "Faltam indicadores para orientar as decisões." },
+  { title: "Equipe crescendo", desc: "Novas pessoas entram sem uma rotina clara para seguir." },
 ];
 
 const entregas = [
-  { title: "ICP e critérios de aderência" },
-  { title: "Processo comercial e funil documentados" },
-  { title: "Papéis, responsabilidades e rotina de gestão" },
-  { title: "Estrutura de CRM alinhada ao processo" },
-  { title: "Painel de indicadores da operação" },
-  { title: "Materiais de abordagem e argumentação" },
+  { title: "Definição de ICP", desc: "Perfil de cliente ideal, critérios de aderência e priorização." },
+  { title: "Processo e funil", desc: "Etapas, gatilhos de avanço e critérios de saída." },
+  { title: "Papéis e responsabilidades", desc: "Quem faz o quê em cada etapa da venda." },
+  { title: "CRM e qualidade dos dados", desc: "Campos, obrigatoriedades e padrão de registro." },
+  { title: "Indicadores", desc: "O que acompanhar para enxergar o funil e a produtividade." },
+  { title: "Rotina de gestão", desc: "Cadência de acompanhamento, pauta e pontos de controle." },
+];
+
+const etapas = [
+  { title: "Diagnóstico", desc: "Leitura da operação, do funil atual e dos pontos de perda." },
+  { title: "Desenho", desc: "Definição de ICP, etapas, critérios, papéis e indicadores." },
+  { title: "Implantação", desc: "Configuração do CRM e adoção do processo com a equipe." },
+  { title: "Acompanhamento", desc: "Análise da execução e ajustes ao longo do uso." },
 ];
 
 const faq = [
   {
-    q: "Quanto tempo dura a estruturação?",
-    a: "O escopo e o cronograma são definidos após o diagnóstico, conforme o tamanho da operação e o grau de organização atual.",
+    q: "Preciso ter CRM antes de começar?",
+    a: "Não. O diagnóstico avalia se o CRM atual atende ou se será necessário implantar ou ajustar a ferramenta.",
   },
   {
-    q: "Vocês implantam CRM?",
-    a: "Avaliamos no diagnóstico se a necessidade é implantar, ajustar ou apenas reorganizar o que já existe.",
+    q: "Vocês vendem para o meu cliente?",
+    a: "Não nesta solução. Aqui organizamos o processo. A condução da venda permanece com a sua equipe.",
   },
   {
-    q: "A estruturação inclui prospecção?",
-    a: "Não. A geração de oportunidades é escopo do Outbound B2B, que pode ser contratado separadamente.",
-  },
-  {
-    q: "Minha equipe precisa participar?",
-    a: "Sim. A operação é lida junto com quem executa, e a implantação é acompanhada com a equipe.",
+    q: "Serve para equipes pequenas?",
+    a: "Sim. O escopo é ajustado ao tamanho da operação e ao estágio de maturidade da equipe comercial.",
   },
 ];
 
@@ -112,51 +72,38 @@ function EstruturacaoPage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Organizar · Estruturação Comercial"
-        title="Clareza para sua operação comercial sair da improvisação."
-        description="Organizamos processo, funil, papéis, critérios, CRM e gestão para sua equipe saber o que fazer, como medir e quando avançar."
+        eyebrow="Organizar"
+        title="Estruturação Comercial"
+        description="Organizamos ICP, funil, papéis, CRM, indicadores e rotina de gestão para que a operação deixe de depender de improviso."
       >
         <PrimaryCTA />
       </PageHero>
 
-      <Section eyebrow="Para quem é" title="Quando a estruturação é o próximo passo">
-        <BulletGrid items={paraQuem} columns={2} />
+      <Section eyebrow="Quando faz sentido" title="Quando esta solução faz sentido">
+        <Reveal>
+          <BulletGrid items={quando} columns={2} />
+        </Reveal>
       </Section>
 
-      <Section
-        eyebrow="Por que estruturar"
-        title="Processo é o que sustenta o crescimento."
-        className="bg-surface/40"
-      >
-        <BulletGrid items={porque} />
+      <Section eyebrow="Entregas" title="O que a Kapptar entrega" className="bg-surface/40">
+        <Reveal>
+          <BulletGrid items={entregas} />
+        </Reveal>
       </Section>
 
-      <Section eyebrow="Comparativo" title="Hoje e com a Kapptar">
-        <Comparison rows={comparativo} />
+      <Section eyebrow="Como funciona" title="Como funciona">
+        <Reveal>
+          <JourneyLine steps={etapas} />
+        </Reveal>
       </Section>
 
-      <Section eyebrow="O que organizamos" title="Frentes da solução" className="bg-surface/40">
-        <BulletGrid items={frentes} />
-      </Section>
-
-      <Section eyebrow="Como entregamos" title="Três etapas de trabalho">
-        <Steps steps={etapas} />
-        <div className="mt-10">
-          <Highlight>Processo não engessa. Processo libera a equipe para executar melhor.</Highlight>
-        </div>
-      </Section>
-
-      <Section eyebrow="Entregas" title="O que fica com a sua empresa" className="bg-surface/40">
-        <BulletGrid items={entregas} />
-      </Section>
-
-      <Section eyebrow="Perguntas frequentes" title="Dúvidas sobre a Estruturação Comercial" narrow>
+      <Section eyebrow="Perguntas frequentes" title="Dúvidas comuns" narrow className="bg-surface/40">
         <Faq items={faq} />
       </Section>
 
       <FinalCTA
-        title="Sua operação está pronta para ter processo?"
-        description="Solicite um diagnóstico gratuito e entenda o que precisa ser organizado primeiro."
+        title="Sua operação está pronta para um processo claro?"
+        description="Comece pelo diagnóstico gratuito e entenda o que precisa ser organizado primeiro."
       />
     </SiteLayout>
   );

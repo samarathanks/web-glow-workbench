@@ -5,8 +5,8 @@ import { Brand } from "./Brand";
 import { solutions } from "./SolutionCards";
 
 const anchors = [
-  { to: "/", hash: "metodo", label: "Método" },
-  { to: "/", hash: "trajetoria", label: "Trajetória" },
+  { to: "/", hash: "como-funciona", label: "Como funciona" },
+  { to: "/", hash: "autoridade", label: "Autoridade" },
   { to: "/", hash: "faq", label: "FAQ" },
 ] as const;
 

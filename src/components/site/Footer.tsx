@@ -47,8 +47,8 @@ export function Footer() {
           <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Kapptar</h2>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link to="/" hash="metodo" className="hover:text-teal transition">
-                Método
+              <Link to="/" hash="como-funciona" className="hover:text-teal transition">
+                Como funciona
               </Link>
             </li>
             <li>

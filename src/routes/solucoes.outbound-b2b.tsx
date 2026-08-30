@@ -2,9 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Section } from "@/components/site/Section";
-import { Comparison } from "@/components/site/Comparison";
 import { Faq } from "@/components/site/Faq";
-import { Highlight, BulletGrid } from "@/components/site/Steps";
+import { BulletGrid } from "@/components/site/Steps";
+import { JourneyLine } from "@/components/site/JourneyLine";
+import { Reveal } from "@/components/site/Reveal";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { PrimaryCTA } from "@/components/site/CTAButton";
 
@@ -15,12 +16,12 @@ export const Route = createFileRoute("/solucoes/outbound-b2b")({
       {
         name: "description",
         content:
-          "Pesquisa de contas, abordagem humana e qualificação de decisores para abrir oportunidades aderentes ao seu mercado.",
+          "Pesquisa de empresas e decisores, abordagem conduzida por equipe humana, qualificação, agendamento e entrega da oportunidade com contexto.",
       },
       { property: "og:title", content: "Outbound B2B — Kapptar" },
       {
         property: "og:description",
-        content: "A Kapptar abre a oportunidade. Sua equipe conduz a venda.",
+        content: "Prospecção orientada por ICP para gerar oportunidades qualificadas no seu pipeline.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -29,81 +30,41 @@ export const Route = createFileRoute("/solucoes/outbound-b2b")({
   component: OutboundPage,
 });
 
-const paraQuem = [
-  { title: "Vendas dependentes de indicação", desc: "Sem previsibilidade quando a demanda espontânea diminui." },
-  { title: "Ticket e ciclo B2B", desc: "Vendas consultivas com decisores definidos e processo de compra." },
-  { title: "Equipe sem tempo para prospectar", desc: "Vendedores absorvidos por atendimento e propostas." },
-  { title: "Novos mercados", desc: "Necessidade de testar segmentos e regiões com direção." },
-];
-
-const comparativo = [
-  {
-    area: "Geração de oportunidades",
-    today: "Dependência de indicação, demanda espontânea ou ações isoladas.",
-    kapptar: "Prospecção orientada por ICP e contexto.",
-  },
-  {
-    area: "Abordagem",
-    today: "Mensagens genéricas enviadas sem pesquisa.",
-    kapptar: "Abordagem construída a partir da conta e do interlocutor.",
-  },
-  {
-    area: "Qualificação",
-    today: "Tempo da equipe consumido por contatos sem aderência.",
-    kapptar: "Leads qualificados antes da atuação do vendedor.",
-  },
-  {
-    area: "Dados",
-    today: "Histórico de prospecção sem registro.",
-    kapptar: "Contas, contatos e interações registrados e analisáveis.",
-  },
-];
-
-const etapas = [
-  { title: "Definimos empresas e segmentos", desc: "Mercados, portes e regiões aderentes ao seu ICP." },
-  { title: "Entendemos a solução", desc: "O que sua empresa resolve, para quem e com qual diferencial." },
-  { title: "Construímos a abordagem", desc: "Mensagem, canais e sequência de contato." },
-  { title: "Pesquisamos e abordamos", desc: "Identificação de contas e contatos, com abordagem conduzida por pessoas." },
-  { title: "Qualificamos", desc: "Aderência, contexto e interesse verificados antes da passagem." },
-  { title: "Entregamos a oportunidade", desc: "Reunião e contexto entregues à sua equipe de vendas." },
+const quando = [
+  { title: "Pipeline dependente de indicação", desc: "As oportunidades chegam sem previsibilidade." },
+  { title: "Equipe sem tempo para prospectar", desc: "O time está ocupado com atendimento e negociação." },
+  { title: "Ticket e ciclo B2B definidos", desc: "A venda exige contato com decisores específicos." },
+  { title: "Processo comercial já existente", desc: "Há quem receba e conduza a oportunidade gerada." },
 ];
 
 const entregas = [
-  { title: "Reuniões com decisores aderentes ao ICP" },
-  { title: "Contexto e histórico de cada oportunidade" },
-  { title: "Registro das contas e contatos trabalhados" },
-  { title: "Leitura de mercado e aprendizados da operação" },
+  { title: "Pesquisa de empresas e decisores", desc: "Contas aderentes ao ICP e mapeamento de quem decide." },
+  { title: "Abordagem por equipe humana", desc: "Contato conduzido por pessoas, com contexto e critério." },
+  { title: "Qualificação", desc: "Verificação de aderência, momento e interesse real." },
+  { title: "Agendamento", desc: "Reunião marcada na agenda do responsável pela venda." },
+  { title: "Oportunidade com contexto", desc: "Histórico, dores e informações registradas na entrega." },
+  { title: "Venda conduzida pelo cliente", desc: "Proposta, negociação e fechamento seguem com a sua equipe." },
 ];
 
-const escopo = [
-  { title: "Operação conduzida por equipe humana", desc: "Pesquisa, abordagem e qualificação feitas por pessoas." },
-  { title: "A Kapptar pesquisa, aborda e qualifica", desc: "Nosso escopo termina na entrega da oportunidade." },
-  {
-    title: "A venda permanece com o cliente",
-    desc: "Apresentação, proposta, negociação e fechamento são conduzidos pela sua equipe.",
-  },
-  {
-    title: "Metas definidas após o diagnóstico",
-    desc: "Volumes e objetivos são acordados conforme mercado, ICP e capacidade da operação.",
-  },
+const etapas = [
+  { title: "Definição do mercado e ICP", desc: "Segmentos, portes, cargos e critérios de aderência." },
+  { title: "Construção da abordagem", desc: "Mensagens, canais, sequência de contatos e objeções." },
+  { title: "Pesquisa, prospecção e qualificação", desc: "Execução da cadência e validação do interesse." },
+  { title: "Entrega da oportunidade", desc: "Reunião agendada e contexto repassado ao vendedor." },
 ];
 
 const faq = [
   {
-    q: "Quantas reuniões vocês entregam por mês?",
-    a: "Volumes e metas são definidos somente após o diagnóstico, considerando mercado, ICP, ciclo de venda e capacidade de atendimento da sua equipe.",
+    q: "Vocês garantem número de reuniões?",
+    a: "Não trabalhamos com promessa de volume. O desempenho depende do mercado, da oferta e do ciclo de decisão de cada operação.",
   },
   {
-    q: "Quem faz a abordagem?",
-    a: "A operação é conduzida por equipe humana. A tecnologia apoia pesquisa e organização, mas o contato é feito por pessoas.",
+    q: "A abordagem é automatizada?",
+    a: "A pesquisa usa apoio de tecnologia, mas a abordagem e a qualificação são conduzidas por equipe humana.",
   },
   {
-    q: "Vocês fecham a venda?",
-    a: "Não. A Kapptar abre a oportunidade e entrega o contexto. Apresentação, proposta, negociação e fechamento permanecem com o cliente.",
-  },
-  {
-    q: "Preciso ter processo comercial antes?",
-    a: "Ajuda muito. Se o processo ainda não existe, o diagnóstico pode indicar a Estruturação Comercial como primeiro passo.",
+    q: "Quem conduz a venda?",
+    a: "Sua equipe. A Kapptar entrega a oportunidade qualificada com contexto; apresentação e fechamento permanecem com você.",
   },
 ];
 
@@ -111,58 +72,38 @@ function OutboundPage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Gerar · Outbound B2B"
-        title="Sua empresa diante das contas certas."
-        description="Pesquisa, abordagem humana e qualificação para abrir oportunidades aderentes ao seu mercado e entregar contexto à sua equipe de vendas."
+        eyebrow="Gerar"
+        title="Outbound B2B"
+        description="Pesquisamos contas, abordamos decisores e entregamos oportunidades qualificadas para a sua equipe conduzir a venda."
       >
         <PrimaryCTA />
       </PageHero>
 
-      <Section eyebrow="Para quem é" title="Quando gerar oportunidades é o próximo passo">
-        <BulletGrid items={paraQuem} columns={2} />
+      <Section eyebrow="Quando faz sentido" title="Quando esta solução faz sentido">
+        <Reveal>
+          <BulletGrid items={quando} columns={2} />
+        </Reveal>
       </Section>
 
-      <Section
-        eyebrow="Prospecção com direção"
-        title="Antes de abordar, entender."
-        description="A prospecção parte do seu ICP e do contexto de cada conta. Pesquisamos quem decide, o que motiva a conversa e qual mensagem faz sentido — em vez de disparar volume sem critério."
-        className="bg-surface/40"
-      >
-        <Highlight>A Kapptar abre a oportunidade. Sua equipe conduz a venda.</Highlight>
+      <Section eyebrow="Entregas" title="O que a Kapptar entrega" className="bg-surface/40">
+        <Reveal>
+          <BulletGrid items={entregas} />
+        </Reveal>
       </Section>
 
-      <Section eyebrow="Comparativo" title="Hoje e com a Kapptar">
-        <Comparison rows={comparativo} />
+      <Section eyebrow="Como funciona" title="Como funciona">
+        <Reveal>
+          <JourneyLine steps={etapas} />
+        </Reveal>
       </Section>
 
-      <Section eyebrow="Como entregamos" title="Da definição do alvo à oportunidade" className="bg-surface/40">
-        <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {etapas.map((e, i) => (
-            <li key={e.title} className="rounded-2xl glass p-7">
-              <div className="font-display text-sm text-muted-foreground">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <h3 className="font-display text-lg font-bold mt-3">{e.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{e.desc}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section eyebrow="O que entregamos" title="Entregas e limites do escopo">
-        <BulletGrid items={entregas} columns={2} />
-        <div className="mt-5">
-          <BulletGrid items={escopo} columns={2} />
-        </div>
-      </Section>
-
-      <Section eyebrow="Perguntas frequentes" title="Dúvidas sobre o Outbound B2B" narrow>
+      <Section eyebrow="Perguntas frequentes" title="Dúvidas comuns" narrow className="bg-surface/40">
         <Faq items={faq} />
       </Section>
 
       <FinalCTA
-        title="Quer chegar às contas certas?"
-        description="Solicite um diagnóstico gratuito e avalie se a prospecção é o próximo passo da sua operação."
+        title="Faltam oportunidades no seu pipeline?"
+        description="No diagnóstico gratuito avaliamos mercado, ICP e viabilidade da prospecção para a sua operação."
       />
     </SiteLayout>
   );
