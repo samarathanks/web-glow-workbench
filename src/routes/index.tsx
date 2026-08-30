@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Section } from "@/components/site/Section";
-import { SolutionCards } from "@/components/site/SolutionCards";
+import { ScenarioSelector } from "@/components/site/ScenarioSelector";
 import { Comparison } from "@/components/site/Comparison";
 import { Faq } from "@/components/site/Faq";
 import { Steps, Highlight } from "@/components/site/Steps";
@@ -30,12 +30,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const provocacoes = [
-  { title: "Seu faturamento depende de indicação.", desc: "E quando a indicação seca, o mês seca junto." },
-  { title: "Você investiu mais em publicidade.", desc: "E o lead entrou, esfriou e morreu no CRM." },
-  { title: "Você contratou mais vendedor.", desc: "E o faturamento não subiu junto." },
-  { title: "Você trocou de CRM.", desc: "E o time continua vendendo do jeito que dá." },
-];
 
 const comparativo = [
   {
