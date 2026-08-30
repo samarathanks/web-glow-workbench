@@ -87,12 +87,19 @@ export function ScenarioSelector() {
         {scenarios.map((s, i) => {
           const isActive = i === active;
           return (
-            <button
+            <div
               key={s.product}
-              type="button"
+              role="button"
+              tabIndex={0}
               onClick={() => setActive(i)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActive(i);
+                }
+              }}
               aria-pressed={isActive}
-              className={`flex flex-col text-left rounded-3xl p-7 transition-all duration-300 ${
+              className={`flex cursor-pointer flex-col text-left rounded-3xl p-7 transition-all duration-300 ${
                 isActive
                   ? "glass border-teal/50 shadow-elevated lg:-translate-y-1"
                   : "glass hover:border-teal/30"
@@ -136,7 +143,7 @@ export function ScenarioSelector() {
               >
                 {s.cta} <ArrowRight size={16} />
               </Link>
-            </button>
+            </div>
           );
         })}
       </div>
