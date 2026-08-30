@@ -17,6 +17,9 @@ import { Route as EntregamosRouteImport } from './routes/entregamos'
 import { Route as DnaRouteImport } from './routes/dna'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolucoesOutboundB2bRouteImport } from './routes/solucoes.outbound-b2b'
+import { Route as SolucoesEstruturacaoComercialRouteImport } from './routes/solucoes.estruturacao-comercial'
+import { Route as SolucoesAgenteComercialIaRouteImport } from './routes/solucoes.agente-comercial-ia'
 
 const ProspeccaoRoute = ProspeccaoRouteImport.update({
   id: '/prospeccao',
@@ -58,6 +61,23 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolucoesOutboundB2bRoute = SolucoesOutboundB2bRouteImport.update({
+  id: '/solucoes/outbound-b2b',
+  path: '/solucoes/outbound-b2b',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucoesEstruturacaoComercialRoute =
+  SolucoesEstruturacaoComercialRouteImport.update({
+    id: '/solucoes/estruturacao-comercial',
+    path: '/solucoes/estruturacao-comercial',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SolucoesAgenteComercialIaRoute =
+  SolucoesAgenteComercialIaRouteImport.update({
+    id: '/solucoes/agente-comercial-ia',
+    path: '/solucoes/agente-comercial-ia',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +88,9 @@ export interface FileRoutesByFullPath {
   '/planos': typeof PlanosRoute
   '/portfolio': typeof PortfolioRoute
   '/prospeccao': typeof ProspeccaoRoute
+  '/solucoes/agente-comercial-ia': typeof SolucoesAgenteComercialIaRoute
+  '/solucoes/estruturacao-comercial': typeof SolucoesEstruturacaoComercialRoute
+  '/solucoes/outbound-b2b': typeof SolucoesOutboundB2bRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +101,9 @@ export interface FileRoutesByTo {
   '/planos': typeof PlanosRoute
   '/portfolio': typeof PortfolioRoute
   '/prospeccao': typeof ProspeccaoRoute
+  '/solucoes/agente-comercial-ia': typeof SolucoesAgenteComercialIaRoute
+  '/solucoes/estruturacao-comercial': typeof SolucoesEstruturacaoComercialRoute
+  '/solucoes/outbound-b2b': typeof SolucoesOutboundB2bRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +115,9 @@ export interface FileRoutesById {
   '/planos': typeof PlanosRoute
   '/portfolio': typeof PortfolioRoute
   '/prospeccao': typeof ProspeccaoRoute
+  '/solucoes/agente-comercial-ia': typeof SolucoesAgenteComercialIaRoute
+  '/solucoes/estruturacao-comercial': typeof SolucoesEstruturacaoComercialRoute
+  '/solucoes/outbound-b2b': typeof SolucoesOutboundB2bRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +130,9 @@ export interface FileRouteTypes {
     | '/planos'
     | '/portfolio'
     | '/prospeccao'
+    | '/solucoes/agente-comercial-ia'
+    | '/solucoes/estruturacao-comercial'
+    | '/solucoes/outbound-b2b'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +143,9 @@ export interface FileRouteTypes {
     | '/planos'
     | '/portfolio'
     | '/prospeccao'
+    | '/solucoes/agente-comercial-ia'
+    | '/solucoes/estruturacao-comercial'
+    | '/solucoes/outbound-b2b'
   id:
     | '__root__'
     | '/'
@@ -121,6 +156,9 @@ export interface FileRouteTypes {
     | '/planos'
     | '/portfolio'
     | '/prospeccao'
+    | '/solucoes/agente-comercial-ia'
+    | '/solucoes/estruturacao-comercial'
+    | '/solucoes/outbound-b2b'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +170,9 @@ export interface RootRouteChildren {
   PlanosRoute: typeof PlanosRoute
   PortfolioRoute: typeof PortfolioRoute
   ProspeccaoRoute: typeof ProspeccaoRoute
+  SolucoesAgenteComercialIaRoute: typeof SolucoesAgenteComercialIaRoute
+  SolucoesEstruturacaoComercialRoute: typeof SolucoesEstruturacaoComercialRoute
+  SolucoesOutboundB2bRoute: typeof SolucoesOutboundB2bRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +233,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solucoes/outbound-b2b': {
+      id: '/solucoes/outbound-b2b'
+      path: '/solucoes/outbound-b2b'
+      fullPath: '/solucoes/outbound-b2b'
+      preLoaderRoute: typeof SolucoesOutboundB2bRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solucoes/estruturacao-comercial': {
+      id: '/solucoes/estruturacao-comercial'
+      path: '/solucoes/estruturacao-comercial'
+      fullPath: '/solucoes/estruturacao-comercial'
+      preLoaderRoute: typeof SolucoesEstruturacaoComercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solucoes/agente-comercial-ia': {
+      id: '/solucoes/agente-comercial-ia'
+      path: '/solucoes/agente-comercial-ia'
+      fullPath: '/solucoes/agente-comercial-ia'
+      preLoaderRoute: typeof SolucoesAgenteComercialIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +266,9 @@ const rootRouteChildren: RootRouteChildren = {
   PlanosRoute: PlanosRoute,
   PortfolioRoute: PortfolioRoute,
   ProspeccaoRoute: ProspeccaoRoute,
+  SolucoesAgenteComercialIaRoute: SolucoesAgenteComercialIaRoute,
+  SolucoesEstruturacaoComercialRoute: SolucoesEstruturacaoComercialRoute,
+  SolucoesOutboundB2bRoute: SolucoesOutboundB2bRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
