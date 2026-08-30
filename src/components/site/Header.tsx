@@ -17,7 +17,7 @@ export function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 glass">
       <nav className="container mx-auto px-6 h-16 flex items-center justify-between gap-4">
-        <Brand />
+        <Brand className="h-8 md:h-9" />
 
         <ul className="hidden lg:flex items-center gap-7 text-sm text-muted-foreground">
           <li>
