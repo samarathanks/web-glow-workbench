@@ -1,17 +1,28 @@
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/kapptar-logo.svg";
+import symbol from "@/assets/kapptar-symbol.svg";
 
 /**
- * Marca provisória em tipografia. Substituir pelo arquivo oficial
- * (SVG/PNG) trocando apenas o conteúdo deste componente.
+ * Logomarca oficial Kapptar (vetor extraído do arquivo vetorizado da marca).
+ * variant="full" = símbolo + wordmark (marca secundária horizontal)
+ * variant="symbol" = apenas o símbolo K
  */
-export function Brand({ className = "text-xl" }: { className?: string }) {
+export function Brand({
+  className = "h-8",
+  variant = "full",
+}: {
+  className?: string;
+  variant?: "full" | "symbol";
+}) {
   return (
-    <Link
-      to="/"
-      aria-label="Kapptar — página inicial"
-      className={`font-display font-bold tracking-tight ${className}`}
-    >
-      kapptar<span className="text-teal">.</span>
+    <Link to="/" aria-label="Kapptar — página inicial" className="inline-flex items-center">
+      <img
+        src={variant === "full" ? logo : symbol}
+        alt="Kapptar"
+        className={`w-auto ${className}`}
+        loading="eager"
+        decoding="async"
+      />
     </Link>
   );
 }
