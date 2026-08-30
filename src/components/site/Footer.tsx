@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-border mt-16">
       <div className="container mx-auto px-6 py-16 grid gap-12 md:grid-cols-4 max-w-6xl">
         <div className="md:col-span-2">
-          <Brand className="text-2xl" />
+          <Brand className="h-9" />
           <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
             Kapptar — Sales Tech de inteligência comercial aplicada. Organizar o processo. Gerar
             oportunidades. Delegar a qualificação.
