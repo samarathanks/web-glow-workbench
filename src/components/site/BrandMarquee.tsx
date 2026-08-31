@@ -1,7 +1,7 @@
-type BrandLogo = { name: string; src: string; scale?: number };
+type BrandLogo = { name: string; src: string; scale?: number; featured?: boolean };
 
 const brands: BrandLogo[] = [
-  { name: "TOTVS", src: "/brands/totvs.svg", scale: 0.78 },
+  { name: "TOTVS", src: "/brands/totvs.svg", featured: true },
   { name: "Onfly", src: "/brands/onfly.svg" },
   { name: "Pluxee", src: "/brands/pluxee.png" },
   { name: "Accesstage", src: "/brands/accesstage.png" },
@@ -11,7 +11,7 @@ const brands: BrandLogo[] = [
   { name: "Bullla", src: "/brands/bullla.svg" },
   { name: "Evol Soluções", src: "/brands/evol.webp", scale: 1.05 },
   { name: "Creditas", src: "/brands/creditas.svg", scale: 0.9 },
-  { name: "Neon", src: "/brands/neon.svg", scale: 0.85 },
+  { name: "Gooroo Crédito", src: "/brands/gooroo-credito.svg" },
 ];
 
 function Row({ ariaHidden }: { ariaHidden?: boolean }) {
@@ -23,7 +23,11 @@ function Row({ ariaHidden }: { ariaHidden?: boolean }) {
       {brands.map((b) => (
         <li
           key={b.name}
-          className="flex h-7 shrink-0 items-center justify-center sm:h-9"
+          className={
+            b.featured
+              ? "flex h-8 shrink-0 items-center justify-center sm:h-10"
+              : "flex h-7 shrink-0 items-center justify-center sm:h-9"
+          }
         >
           <img
             src={b.src}
