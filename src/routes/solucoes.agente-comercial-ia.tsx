@@ -91,11 +91,11 @@ function AgentePage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Delegar"
-        title="Agente Comercial de IA"
+        eyebrow="Qualificar"
+        title="Qualifique e acompanhe leads sem consumir o tempo do vendedor."
         description="Não é um agente genérico. É o agente da sua operação: qualifica, atualiza o CRM, acompanha o lead e aciona o vendedor."
       >
-        <PrimaryCTA />
+        <PrimaryCTA>Conhecer o Agente de IA</PrimaryCTA>
       </PageHero>
 
       <Section eyebrow="Quando faz sentido" title="Quando esta solução faz sentido">
@@ -177,7 +177,7 @@ function AgentePage() {
 
       <FinalCTA
         title="Sua equipe perde tempo na qualificação?"
-        description="No diagnóstico gratuito avaliamos o fluxo de leads e o que pode ser delegado ao agente."
+        description="No diagnóstico avaliamos o fluxo de leads e o que pode ser delegado ao agente."
       />
     </SiteLayout>
   );

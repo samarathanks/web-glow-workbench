@@ -73,10 +73,10 @@ function EstruturacaoPage() {
     <SiteLayout>
       <PageHero
         eyebrow="Organizar"
-        title="Estruturação Comercial"
+        title="Transforme conhecimento disperso em um processo comercial claro e replicável."
         description="Organizamos ICP, funil, papéis, CRM, indicadores e rotina de gestão para que a operação deixe de depender de improviso."
       >
-        <PrimaryCTA />
+        <PrimaryCTA>Organizar minha operação</PrimaryCTA>
       </PageHero>
 
       <Section eyebrow="Quando faz sentido" title="Quando esta solução faz sentido">
@@ -103,7 +103,7 @@ function EstruturacaoPage() {
 
       <FinalCTA
         title="Sua operação está pronta para um processo claro?"
-        description="Comece pelo diagnóstico gratuito e entenda o que precisa ser organizado primeiro."
+        description="Comece pelo diagnóstico e entenda o que precisa ser organizado primeiro."
       />
     </SiteLayout>
   );

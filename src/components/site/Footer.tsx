@@ -9,8 +9,8 @@ export function Footer() {
         <div className="md:col-span-2">
           <Brand className="h-9" />
           <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
-            Kapptar — Sales Tech de inteligência comercial aplicada. Organizar o processo. Gerar
-            oportunidades. Delegar a qualificação.
+            Sales Tech de inteligência comercial aplicada. Organizar o processo comercial, gerar
+            novas oportunidades B2B e qualificar cada lead com contexto.
           </p>
           <a
             href="https://www.instagram.com/kapptar"

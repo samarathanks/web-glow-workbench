@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Section } from "@/components/site/Section";
-import { ScenarioSelector } from "@/components/site/ScenarioSelector";
+import { SolutionCards } from "@/components/site/SolutionCards";
+import { HeroPipeline } from "@/components/site/HeroPipeline";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { JourneyLine } from "@/components/site/JourneyLine";
 import { Reveal } from "@/components/site/Reveal";
 import { Faq } from "@/components/site/Faq";
 import { FinalCTA } from "@/components/site/FinalCTA";
-import { PrimaryCTA, SecondaryCTA } from "@/components/site/CTAButton";
+import { SecondaryCTA } from "@/components/site/CTAButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,13 +18,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Estruturação comercial, outbound B2B e agente comercial de IA para operações que precisam organizar o processo, gerar oportunidades ou delegar a qualificação.",
+          "Estruturação comercial, outbound B2B e agente comercial de IA para operações que precisam organizar o processo, gerar oportunidades e qualificar leads.",
       },
       { property: "og:title", content: "Kapptar — Sales Tech de inteligência comercial aplicada" },
       {
         property: "og:description",
         content:
-          "Processo, prospecção e IA para operações comerciais que precisam avançar. Solicite um diagnóstico gratuito.",
+          "Transformamos operações comerciais em processos que geram e avançam oportunidades.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -31,44 +33,65 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const transformacoes = [
+  {
+    from: "Improviso e conhecimento disperso",
+    to: "Processo claro, registrado e replicável",
+    accent: "text-blue",
+    bar: "from-blue/70 to-blue/10",
+  },
+  {
+    from: "Pipeline dependente de indicação",
+    to: "Prospecção ativa e novas conversas B2B",
+    accent: "text-teal",
+    bar: "from-teal/70 to-teal/10",
+  },
+  {
+    from: "Leads esperando atendimento",
+    to: "Qualificação, follow-up e passagem com contexto",
+    accent: "text-green",
+    bar: "from-green/70 to-green/10",
+  },
+];
+
 const etapas = [
   {
     title: "Diagnóstico",
-    desc: "Entendemos o cenário, o objetivo e o estágio da operação.",
+    desc: "Identificamos o que impede a operação de avançar.",
   },
   {
-    title: "Escopo",
-    desc: "Definimos solução, responsabilidades, limites e entregas.",
+    title: "Desenho",
+    desc: "Definimos processo, escopo, responsabilidades e critérios.",
   },
   {
     title: "Implantação",
-    desc: "Configuramos o processo e colocamos a operação para funcionar.",
+    desc: "Colocamos a solução em funcionamento dentro da realidade da empresa.",
   },
   {
     title: "Acompanhamento",
-    desc: "Analisamos a execução e direcionamos os ajustes necessários.",
+    desc: "Analisamos a operação e realizamos os ajustes previstos no escopo.",
   },
 ];
 
 const diferenciais = [
   {
-    title: "Diagnóstico antes da solução",
-    desc: "Não indicamos o mesmo produto para todas as empresas. Primeiro entendemos onde a operação perde capacidade.",
+    title: "Tecnologia com contexto",
+    desc: "A tecnologia é configurada a partir da realidade comercial da empresa, não aplicada como uma solução genérica.",
   },
   {
-    title: "Execução aplicada",
-    desc: "Não entregamos apenas recomendações. Estruturamos, prospectamos ou implantamos conforme o escopo contratado.",
+    title: "Processo antes da automação",
+    desc: "Automatizamos o que já possui lógica, critérios e responsabilidade definidos.",
   },
   {
-    title: "Tecnologia sem perder o humano",
-    desc: "A tecnologia assume processos e rotinas. Pessoas permanecem responsáveis por relacionamento, negociação e decisão.",
+    title: "Especialização comercial",
+    desc: "Cada entrega está conectada ao processo de geração, qualificação e avanço de oportunidades.",
   },
 ];
 
 const faq = [
   {
     q: "Qual solução é indicada para minha empresa?",
-    a: "Depende do estágio da operação. O diagnóstico identifica se o primeiro passo é organizar o processo, gerar oportunidades ou delegar a qualificação.",
+    a: "Depende do estágio da operação. O diagnóstico identifica se o primeiro passo é organizar o processo, gerar novas conversas comerciais ou qualificar e acompanhar os leads que já chegam.",
   },
   {
     q: "Preciso contratar as três soluções?",
@@ -80,7 +103,7 @@ const faq = [
   },
   {
     q: "Como começamos?",
-    a: "Com um diagnóstico gratuito para entender o cenário, o objetivo e qual solução é mais aderente ao momento da empresa.",
+    a: "Com um diagnóstico para entender o cenário comercial, o objetivo e qual solução é mais aderente ao momento da empresa.",
   },
 ];
 
@@ -88,119 +111,146 @@ function HomePage() {
   return (
     <SiteLayout>
       {/* 1. HERO */}
-      <section className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20">
-        <div className="pointer-events-none absolute inset-0 bg-mesh opacity-60" aria-hidden />
+      <section className="relative overflow-hidden pt-14 pb-16 md:pt-20 md:pb-24">
+        <div className="pointer-events-none absolute inset-0 bg-mesh opacity-50" aria-hidden />
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.14]"
+          className="pointer-events-none absolute inset-0 opacity-[0.10]"
           aria-hidden
           style={{
             backgroundImage:
               "linear-gradient(to right, oklch(1 0 0 / 0.5) 1px, transparent 1px), linear-gradient(to bottom, oklch(1 0 0 / 0.5) 1px, transparent 1px)",
             backgroundSize: "72px 72px",
-            maskImage: "radial-gradient(ellipse at 50% 0%, black, transparent 70%)",
+            maskImage: "radial-gradient(ellipse at 30% 0%, black, transparent 70%)",
           }}
         />
-        <div className="container mx-auto px-6 max-w-4xl text-center relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[11px] uppercase tracking-[0.24em] text-muted-foreground mb-6">
-            <span className="w-2 h-2 rounded-full bg-teal" /> Kapptar | Sales Tech
-          </div>
+        <div className="container mx-auto px-6 max-w-6xl relative">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+                <span className="h-1.5 w-1.5 rounded-full bg-green" /> Kapptar | Sales Tech
+              </div>
 
-          <h1 className="font-display text-3xl md:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] tracking-tight text-balance">
-            Processo, prospecção e IA para operações comerciais que{" "}
-            <span className="text-gradient">precisam avançar</span>.
-          </h1>
+              <h1 className="mt-6 font-display text-3xl md:text-5xl font-bold leading-[1.08] tracking-tight text-balance">
+                Transformamos operações comerciais em processos que{" "}
+                <span className="text-gradient">geram e avançam oportunidades</span>.
+              </h1>
 
-          <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            A Kapptar estrutura operações comerciais, gera oportunidades B2B e implanta agentes de IA
-            para qualificação, follow-up e organização do CRM.
-          </p>
+              <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground">
+                Estruturamos seu comercial, abrimos novas conversas B2B e implantamos IA para
+                qualificar, acompanhar e preparar cada lead para a venda.
+              </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <PrimaryCTA />
-            <SecondaryCTA to="/" hash="solucoes">
-              Encontre a solução ideal
-            </SecondaryCTA>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <SecondaryCTA
+                  to="/"
+                  hash="solucoes"
+                  className="!bg-gradient-cta !border-transparent !text-primary-foreground shadow-glow-green"
+                >
+                  Encontrar a solução ideal <ArrowRight size={17} />
+                </SecondaryCTA>
+                <SecondaryCTA to="/" hash="solucoes">
+                  Conhecer as soluções
+                </SecondaryCTA>
+              </div>
+            </div>
+
+            <Reveal delay={120}>
+              <HeroPipeline />
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* 2. SELETOR DE CENÁRIO E SOLUÇÃO */}
+      {/* 2. PORTFÓLIO — única aparição das três soluções */}
       <Section
         id="solucoes"
-        eyebrow="Organizar → Gerar → Delegar"
-        align="center"
-        title="O que impede sua operação comercial de avançar?"
-        description="Selecione o cenário que mais se aproxima da sua empresa."
-        className="bg-surface/40"
+        eyebrow="Soluções"
+        title="Sua operação precisa avançar em qual ponto?"
+        description="Identifique o que limita seu comercial hoje e conheça a solução mais adequada para o próximo estágio."
+        className="bg-surface/35"
       >
         <Reveal>
-          <ScenarioSelector />
+          <SolutionCards />
         </Reveal>
       </Section>
 
-      {/* 3. AUTORIDADE */}
-      <Section
-        id="autoridade"
-        eyebrow="Autoridade"
-        align="center"
-        title="Autoridade construída na prática."
-        description="A experiência da Kapptar foi construída em diferentes operações, mercados e desafios comerciais B2B."
-      >
-        <Reveal>
-          <h3 className="text-center text-xs uppercase tracking-[0.22em] text-teal font-semibold mb-8">
-            Marcas que fazem parte da nossa trajetória.
-          </h3>
-          <BrandMarquee />
-        </Reveal>
-      </Section>
-
-      {/* 4. DA NECESSIDADE À OPERAÇÃO */}
-      <Section
-        id="como-funciona"
-        eyebrow="Contratação"
-        align="center"
-        title="Da necessidade à operação."
-        description="Cada projeto começa com um diagnóstico e avança com escopo, responsabilidades e entregas claramente definidos."
-        className="bg-surface/40"
-      >
-        <Reveal>
-          <JourneyLine steps={etapas} />
-        </Reveal>
-      </Section>
-
-      {/* 5. DIFERENCIAIS */}
-      <Section
-        id="diferenciais"
-        eyebrow="Diferenciais"
-        align="center"
-        title="Inteligência comercial com função e responsabilidade."
-      >
+      {/* 3. TRANSFORMAÇÃO */}
+      <Section id="transformacao" eyebrow="Transformação" title="O que muda na prática">
         <div className="grid gap-5 lg:grid-cols-3">
-          {diferenciais.map((d, i) => (
-            <Reveal key={d.title} delay={i * 80}>
-              <div className="h-full rounded-3xl glass p-7 transition duration-300 hover:border-teal/40 hover:-translate-y-1">
-                <h3 className="font-display text-lg font-bold leading-snug">{d.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
+          {transformacoes.map((t, i) => (
+            <Reveal key={t.from} delay={i * 80}>
+              <div className="h-full rounded-2xl border border-border bg-surface/70 p-7 transition-colors duration-300 hover:border-teal/40">
+                <span
+                  aria-hidden
+                  className={`block h-px w-full bg-gradient-to-r ${t.bar}`}
+                />
+                <p className="mt-6 text-sm leading-relaxed text-muted-foreground line-through decoration-muted-foreground/40">
+                  {t.from}
+                </p>
+                <div className={`mt-4 flex items-start gap-2 ${t.accent}`}>
+                  <ArrowRight size={16} className="mt-1 shrink-0" />
+                  <p className="font-display text-base font-bold leading-snug text-foreground">
+                    {t.to}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
       </Section>
 
-      {/* 6. FAQ */}
+      {/* 4. COMO A KAPPTAR ENTREGA */}
       <Section
-        id="faq"
-        eyebrow="Perguntas frequentes"
-        align="center"
-        title="Dúvidas comuns"
-        narrow
-        className="bg-surface/40"
+        id="como-funciona"
+        eyebrow="Como entregamos"
+        title="Da necessidade à operação"
+        description="Entendemos o cenário, desenhamos a solução e acompanhamos sua aplicação no dia a dia comercial."
+        className="bg-surface/35"
       >
+        <Reveal>
+          <JourneyLine steps={etapas} />
+        </Reveal>
+      </Section>
+
+      {/* 5. AUTORIDADE */}
+      <Section
+        id="autoridade"
+        eyebrow="Autoridade"
+        align="center"
+        title="Experiência construída dentro de operações comerciais reais."
+        description="Empresas de diferentes mercados já confiaram na Kapptar para estruturar processos, gerar oportunidades e fortalecer suas operações comerciais."
+      >
+        <Reveal>
+          <BrandMarquee />
+        </Reveal>
+      </Section>
+
+      {/* 6. DIFERENCIAIS */}
+      <Section
+        id="diferenciais"
+        eyebrow="Diferenciais"
+        title="Inteligência comercial aplicada, não genérica."
+        className="bg-surface/35"
+      >
+        <div className="grid gap-5 lg:grid-cols-3">
+          {diferenciais.map((d, i) => (
+            <Reveal key={d.title} delay={i * 80}>
+              <div className="h-full rounded-2xl border border-border bg-surface/70 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-green/40">
+                <h3 className="font-display text-lg font-bold leading-snug">{d.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* 7. FAQ */}
+      <Section id="faq" eyebrow="Perguntas frequentes" title="Dúvidas comuns" narrow>
         <Faq items={faq} />
       </Section>
 
-      {/* 7. CTA FINAL */}
-      <FinalCTA description="Conte onde sua empresa está hoje. A Kapptar identifica a solução mais adequada para organizar, gerar ou delegar." />
+      {/* 8. CHAMADA FINAL */}
+      <FinalCTA />
     </SiteLayout>
   );
 }

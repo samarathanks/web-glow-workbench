@@ -176,3 +176,26 @@
   html { scroll-behavior: auto; }
   .marquee { animation: none; }
 }
+
+/* CTA verde — pontos de avanço */
+:root {
+  --gradient-cta: linear-gradient(135deg, #258E9B, #2FA879 70%);
+  --shadow-glow-green: 0 12px 38px -14px color-mix(in oklab, #2FA879 55%, transparent);
+}
+
+@utility bg-gradient-cta {
+  background: var(--gradient-cta);
+}
+
+@utility shadow-glow-green {
+  box-shadow: var(--shadow-glow-green);
+}
+
+@keyframes pipeline-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="pipeline-pulse"] { animation: none !important; }
+}

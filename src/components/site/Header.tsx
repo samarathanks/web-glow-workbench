@@ -73,7 +73,7 @@ export function Header() {
             to="/contato"
             className="px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-brand shadow-glow hover:opacity-90 transition"
           >
-            Solicitar diagnóstico gratuito
+            Falar com a Kapptar
           </Link>
         </div>
 
@@ -124,7 +124,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className="inline-block px-5 py-2 rounded-full font-semibold text-primary-foreground bg-gradient-brand"
               >
-                Solicitar diagnóstico gratuito
+                Falar com a Kapptar
               </Link>
             </li>
           </ul>

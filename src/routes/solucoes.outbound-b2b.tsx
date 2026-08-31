@@ -73,10 +73,10 @@ function OutboundPage() {
     <SiteLayout>
       <PageHero
         eyebrow="Gerar"
-        title="Outbound B2B"
+        title="Leve sua empresa até as contas que ainda não chegam até você."
         description="Pesquisamos contas, abordamos decisores e entregamos oportunidades qualificadas para a sua equipe conduzir a venda."
       >
-        <PrimaryCTA />
+        <PrimaryCTA>Gerar novas oportunidades</PrimaryCTA>
       </PageHero>
 
       <Section eyebrow="Quando faz sentido" title="Quando esta solução faz sentido">
@@ -103,7 +103,7 @@ function OutboundPage() {
 
       <FinalCTA
         title="Faltam oportunidades no seu pipeline?"
-        description="No diagnóstico gratuito avaliamos mercado, ICP e viabilidade da prospecção para a sua operação."
+        description="No diagnóstico avaliamos mercado, ICP e viabilidade da prospecção para a sua operação."
       />
     </SiteLayout>
   );
