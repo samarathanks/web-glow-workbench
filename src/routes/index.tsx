@@ -9,7 +9,7 @@ import { JourneyLine } from "@/components/site/JourneyLine";
 import { Reveal } from "@/components/site/Reveal";
 import { Faq } from "@/components/site/Faq";
 import { FinalCTA } from "@/components/site/FinalCTA";
-import { PrimaryCTA, SecondaryCTA } from "@/components/site/CTAButton";
+import { SecondaryCTA } from "@/components/site/CTAButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
