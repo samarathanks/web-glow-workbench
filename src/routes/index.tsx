@@ -212,10 +212,10 @@ function HomePage() {
         </Reveal>
       </Section>
 
-      {/* 5. AUTORIDADE */}
+      {/* 5. CASES */}
       <Section
-        id="autoridade"
-        eyebrow="Autoridade"
+        id="cases"
+        eyebrow="Cases"
         align="center"
         title="Experiência construída dentro de operações comerciais reais."
         description="Empresas de diferentes mercados já confiaram na Kapptar para estruturar processos, gerar oportunidades e fortalecer suas operações comerciais."
