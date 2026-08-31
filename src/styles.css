@@ -39,9 +39,11 @@
 
   --color-teal: var(--teal);
   --color-blue: var(--blue);
+  --color-green: var(--green);
   --color-violet: var(--violet);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
@@ -53,56 +55,58 @@
 :root {
   --radius: 0.875rem;
 
-  /* Modern Tech — dark gradient */
-  --background: #12111F; /* oficial Kapptar */
-  --foreground: oklch(0.98 0.005 240);
+  /* Kapptar — deep petrol base, azul + teal + verde */
+  --background: #061821;
+  --foreground: #F5F8FA;
 
-  --surface: #191828;
-  --surface-elevated: #201f33;
+  --surface: #0B2230;
+  --surface-elevated: #0D2A34;
 
-  --card: #191828;
-  --card-foreground: oklch(0.98 0.005 240);
-  --popover: #191828;
-  --popover-foreground: oklch(0.98 0.005 240);
+  --card: #0B2230;
+  --card-foreground: #F5F8FA;
+  --popover: #0B2230;
+  --popover-foreground: #F5F8FA;
 
-  --primary: #02A5F0; /* azul oficial */
-  --primary-foreground: #12111F;
+  --primary: #247DB5; /* azul tecnológico */
+  --primary-foreground: #F5F8FA;
 
-  --secondary: #1d1c30;
-  --secondary-foreground: oklch(0.98 0.005 240);
+  --secondary: #0D2A34;
+  --secondary-foreground: #F5F8FA;
 
-  --muted: #1d1c30;
-  --muted-foreground: #9fa6c0;
+  --muted: #0D2A34;
+  --muted-foreground: #A7B6BD;
 
-  --accent: #0E6BA8; /* azul secundário */
-  --accent-foreground: oklch(0.98 0.005 240);
+  --accent: #258E9B; /* teal */
+  --accent-foreground: #061821;
 
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0.005 240);
+  --destructive: oklch(0.62 0.2 25);
+  --destructive-foreground: #F5F8FA;
 
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: #02A5F0;
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 13%);
+  --ring: #258E9B;
 
-  --teal: #02A5F0;
-  --blue: #0E6BA8;
-  --violet: #0A2472;
+  --teal: #258E9B;
+  --blue: #247DB5;
+  --green: #2FA879;
+  --violet: #0E4F86; /* azul profundo */
 
-  --chart-1: #02A5F0;
-  --chart-2: #0E6BA8;
-  --chart-3: #0A2472;
-  --chart-4: #A6E1FA;
-  --chart-5: #001C55;
+  --chart-1: #247DB5;
+  --chart-2: #258E9B;
+  --chart-3: #2FA879;
+  --chart-4: #0E4F86;
+  --chart-5: #A7B6BD;
 
   /* Signature gradients */
-  --gradient-brand: linear-gradient(135deg, #02A5F0, #0A2472);
-  --gradient-mesh: radial-gradient(at 20% 20%, color-mix(in oklab, #02A5F0 32%, transparent) 0px, transparent 50%),
-                   radial-gradient(at 80% 10%, color-mix(in oklab, #0E6BA8 30%, transparent) 0px, transparent 50%),
-                   radial-gradient(at 60% 90%, color-mix(in oklab, #0A2472 40%, transparent) 0px, transparent 50%);
-  --gradient-text: linear-gradient(135deg, #A6E1FA, #02A5F0, #0E6BA8);
+  --gradient-brand: linear-gradient(135deg, #0E4F86, #247DB5 45%, #258E9B 100%);
+  --gradient-mesh: radial-gradient(at 18% 18%, color-mix(in oklab, #247DB5 24%, transparent) 0px, transparent 52%),
+                   radial-gradient(at 82% 12%, color-mix(in oklab, #258E9B 20%, transparent) 0px, transparent 50%),
+                   radial-gradient(at 62% 92%, color-mix(in oklab, #2FA879 16%, transparent) 0px, transparent 48%);
+  --gradient-text: linear-gradient(115deg, #A7E7DE, #258E9B 45%, #2FA879 100%);
 
-  --shadow-glow: 0 10px 40px -10px color-mix(in oklab, #02A5F0 45%, transparent);
-  --shadow-elevated: 0 20px 50px -20px rgb(0 0 0 / 0.6);
+  --shadow-glow: 0 12px 42px -14px color-mix(in oklab, #258E9B 48%, transparent);
+  --shadow-elevated: 0 20px 50px -20px rgb(0 0 0 / 0.65);
+
 }
 
 @layer base {
@@ -123,7 +127,7 @@
   }
 
   ::selection {
-    background-color: color-mix(in oklab, #02A5F0 30%, transparent);
+    background-color: color-mix(in oklab, #258E9B 32%, transparent);
     color: var(--foreground);
   }
 }

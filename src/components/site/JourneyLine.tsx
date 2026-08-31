@@ -5,7 +5,7 @@ export function JourneyLine({ steps }: { steps: JourneyStep[] }) {
     <ol className="relative grid gap-5 md:grid-cols-4">
       <span
         aria-hidden
-        className="pointer-events-none absolute left-6 top-4 bottom-4 w-px bg-gradient-to-b from-teal/60 via-blue/50 to-violet/40 md:left-0 md:right-0 md:top-6 md:bottom-auto md:h-px md:w-full md:bg-gradient-to-r"
+        className="pointer-events-none absolute left-6 top-4 bottom-4 w-px bg-gradient-to-b from-blue/60 via-teal/55 to-green/50 md:left-0 md:right-0 md:top-6 md:bottom-auto md:h-px md:w-full md:bg-gradient-to-r"
       />
       {steps.map((s, i) => (
         <li key={s.title} className="relative pl-16 md:pl-0">
