@@ -6,7 +6,7 @@ import { solutions } from "./SolutionCards";
 
 const anchors = [
   { to: "/", hash: "como-funciona", label: "Como funciona" },
-  { to: "/", hash: "autoridade", label: "Autoridade" },
+  { to: "/", hash: "cases", label: "Cases" },
   { to: "/", hash: "faq", label: "FAQ" },
 ] as const;
 
