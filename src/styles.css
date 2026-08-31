@@ -169,7 +169,7 @@
 }
 
 @utility marquee {
-  animation: marquee 42s linear infinite;
+  animation: marquee 34s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
