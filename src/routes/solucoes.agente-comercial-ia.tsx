@@ -91,7 +91,7 @@ function AgentePage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Delegar"
+        eyebrow="Qualificar"
         title="Qualifique e acompanhe leads sem consumir o tempo do vendedor."
         description="Não é um agente genérico. É o agente da sua operação: qualifica, atualiza o CRM, acompanha o lead e aciona o vendedor."
       >

@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contato")({
       {
         name: "description",
         content:
-          "Solicite um diagnóstico e entenda qual é o próximo passo da sua operação comercial: organizar, gerar ou delegar.",
+          "Solicite um diagnóstico e entenda qual é o próximo passo da sua operação comercial: organizar, gerar ou qualificar.",
       },
       { property: "og:title", content: "Solicitar diagnóstico — Kapptar" },
       {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/contato")({
 const desafios = [
   "Organizar o processo comercial",
   "Gerar oportunidades com prospecção",
-  "Delegar a qualificação de leads",
+  "Qualificar leads e fazer follow-up",
   "Ainda não sei — quero entender",
 ];
 
@@ -112,7 +112,7 @@ function DiagnosticoPage() {
               <ol className="mt-4 space-y-3 text-sm text-muted-foreground">
                 <li>1. Você envia o contexto da sua operação.</li>
                 <li>2. Agendamos uma conversa de diagnóstico.</li>
-                <li>3. Indicamos o próximo passo: organizar, gerar ou delegar.</li>
+                <li>3. Indicamos o próximo passo: organizar, gerar ou qualificar.</li>
               </ol>
             </div>
             <ContactCard
