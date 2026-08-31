@@ -9,6 +9,7 @@ export const solutions = [
     cta: "Conhecer a Estruturação Comercial",
     to: "/solucoes/estruturacao-comercial",
     icon: Boxes,
+    accent: "text-blue",
   },
   {
     stage: "Gerar",
@@ -17,6 +18,7 @@ export const solutions = [
     cta: "Conhecer o Outbound B2B",
     to: "/solucoes/outbound-b2b",
     icon: Radar,
+    accent: "text-teal",
   },
   {
     stage: "Delegar",
@@ -25,6 +27,7 @@ export const solutions = [
     cta: "Conhecer o Agente Comercial de IA",
     to: "/solucoes/agente-comercial-ia",
     icon: Bot,
+    accent: "text-green",
   },
 ] as const;
 
@@ -40,7 +43,7 @@ export function SolutionCards() {
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-brand shadow-glow">
               <s.icon size={22} className="text-primary-foreground" />
             </div>
-            <span className="text-xs uppercase tracking-[0.22em] text-teal font-semibold">
+            <span className={`text-xs uppercase tracking-[0.22em] font-semibold ${s.accent}`}>
               {s.stage}
             </span>
           </div>
