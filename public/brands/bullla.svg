@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="180" height="40" viewBox="0 0 180 40">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_4" data-name="Retângulo 4" width="180" height="40" fill="#2c67ff"/>
+    </clipPath>
+  </defs>
+  <g id="logo-bullla-novo" transform="translate(0 0)">
+    <g id="Grupo_1" data-name="Grupo 1" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <path id="Caminho_1" data-name="Caminho 1" d="M35.107,5.955a11.4,11.4,0,0,1,11.15,11.63,11.985,11.985,0,0,1-1.207,5.266,11.874,11.874,0,0,1,2.778,7.679,11.4,11.4,0,0,1-11.15,11.631H0V5.956H10.284V31.845H37.126a1.376,1.376,0,0,0,0-2.742H13.4V5.955H23.691V18.9H35.615a1.376,1.376,0,0,0,0-2.742H26.794V5.955Z" transform="translate(0 -2.918)" fill="#2c67ff"/>
+      <path id="Caminho_2" data-name="Caminho 2" d="M129.281,35.338c2.659,0,4.893-1.529,4.893-4.271s-2.287-4.112-5.107-4.112h-7.822V35.34h8.036Zm-.639-14.4c2.554,0,4.577-1.477,4.577-4.114,0-2.428-2.021-3.693-4.416-3.693h-7.556v7.8h7.4ZM113.158,6.277h17.029c6.277,0,10.96,3.533,10.96,9.441a8.988,8.988,0,0,1-4.2,7.859,8.836,8.836,0,0,1,5.374,8.333c0,6.539-5.11,10.284-11.652,10.284H113.158Z" transform="translate(-54.962 -3.076)" fill="#2c67ff"/>
+      <path id="Caminho_3" data-name="Caminho 3" d="M173.6,37.257v-17.2h7.737V36.778c0,3.568,1.934,6.072,5.427,6.072s5.428-2.5,5.428-6.072V20.053h7.683V37.2c0,7.884-5.1,12.623-13.111,12.623S173.6,45.085,173.6,37.257" transform="translate(-84.319 -9.827)" fill="#2c67ff"/>
+      <rect id="Retângulo_1" data-name="Retângulo 1" width="7.737" height="39.09" transform="translate(118.608)" fill="#2c67ff"/>
+      <rect id="Retângulo_2" data-name="Retângulo 2" width="7.737" height="39.09" transform="translate(129.436)" fill="#2c67ff"/>
+      <rect id="Retângulo_3" data-name="Retângulo 3" width="7.737" height="39.09" transform="translate(140.265)" fill="#2c67ff"/>
+      <path id="Caminho_4" data-name="Caminho 4" d="M314.108,34.026c0-4.793-2.955-8.257-7.361-8.257s-7.307,3.621-7.307,8.257,3.008,8.149,7.307,8.149,7.361-3.3,7.361-8.149m-22.408,0c0-8.682,5.91-15.128,13.273-15.128,3.976,0,6.985,1.439,8.921,4.369H314c-.053-1.277-.056-2.4-.056-3.782h7.737V48.352h-7.737c0-1.545,0-2.237.056-3.676h-.106A10.736,10.736,0,0,1,305.08,49.1c-7.683,0-13.38-6.286-13.38-15.075Z" transform="translate(-141.683 -9.261)" fill="#2c67ff"/>
+    </g>
+  </g>
+</svg>
