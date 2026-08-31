@@ -21,15 +21,18 @@ function Row({ ariaHidden }: { ariaHidden?: boolean }) {
       className="flex shrink-0 items-center gap-10 pr-10 sm:gap-14 sm:pr-14"
     >
       {brands.map((b) => (
-        <li key={b.name} className="flex shrink-0 items-center justify-center">
+        <li
+          key={b.name}
+          className="flex h-7 shrink-0 items-center justify-center sm:h-9"
+        >
           <img
             src={b.src}
             alt={ariaHidden ? "" : b.name}
             loading="lazy"
             decoding="async"
             draggable={false}
-            style={{ height: `${(b.scale ?? 1) * 100}%` }}
-            className="h-7 w-auto max-w-[150px] object-contain opacity-60 transition-opacity duration-300 [filter:brightness(0)_invert(1)] hover:opacity-100 sm:h-9 sm:max-w-[180px]"
+            style={{ maxHeight: `${(b.scale ?? 1) * 100}%` }}
+            className="h-full w-auto max-w-[130px] object-contain opacity-60 transition-opacity duration-300 [filter:brightness(0)_invert(1)] hover:opacity-100 sm:max-w-[165px]"
           />
         </li>
       ))}
