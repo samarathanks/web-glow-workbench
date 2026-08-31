@@ -103,7 +103,7 @@ function EstruturacaoPage() {
 
       <FinalCTA
         title="Sua operação está pronta para um processo claro?"
-        description="Comece pelo diagnóstico gratuito e entenda o que precisa ser organizado primeiro."
+        description="Comece pelo diagnóstico e entenda o que precisa ser organizado primeiro."
       />
     </SiteLayout>
   );

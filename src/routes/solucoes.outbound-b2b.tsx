@@ -103,7 +103,7 @@ function OutboundPage() {
 
       <FinalCTA
         title="Faltam oportunidades no seu pipeline?"
-        description="No diagnóstico gratuito avaliamos mercado, ICP e viabilidade da prospecção para a sua operação."
+        description="No diagnóstico avaliamos mercado, ICP e viabilidade da prospecção para a sua operação."
       />
     </SiteLayout>
   );

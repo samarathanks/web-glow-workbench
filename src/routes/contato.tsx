@@ -8,13 +8,13 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Diagnóstico gratuito — Kapptar" },
+      { title: "Diagnóstico — Kapptar" },
       {
         name: "description",
         content:
-          "Solicite um diagnóstico gratuito e entenda qual é o próximo passo da sua operação comercial: organizar, gerar ou delegar.",
+          "Solicite um diagnóstico e entenda qual é o próximo passo da sua operação comercial: organizar, gerar ou delegar.",
       },
-      { property: "og:title", content: "Solicitar diagnóstico gratuito — Kapptar" },
+      { property: "og:title", content: "Solicitar diagnóstico — Kapptar" },
       {
         property: "og:description",
         content: "Conte onde sua operação comercial está hoje. Nós indicamos o próximo passo.",
@@ -56,7 +56,7 @@ function DiagnosticoPage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Diagnóstico gratuito"
+        eyebrow="Diagnóstico"
         title="Vamos entender onde sua operação comercial está hoje."
         description="Uma conversa para ler o cenário, o processo e o objetivo — e indicar qual é o próximo passo mais adequado."
       />
@@ -98,7 +98,7 @@ function DiagnosticoPage() {
                 disabled={sending}
                 className="w-full px-7 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-brand shadow-glow hover:opacity-90 disabled:opacity-50 transition inline-flex items-center justify-center gap-2"
               >
-                <Send size={18} /> {sending ? "Enviando..." : "Solicitar diagnóstico gratuito"}
+                <Send size={18} /> {sending ? "Enviando..." : "Solicitar diagnóstico"}
               </button>
               <p className="text-xs text-muted-foreground text-center">
                 Sem compromisso. Usamos as informações apenas para preparar a conversa.

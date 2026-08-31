@@ -177,7 +177,7 @@ function AgentePage() {
 
       <FinalCTA
         title="Sua equipe perde tempo na qualificação?"
-        description="No diagnóstico gratuito avaliamos o fluxo de leads e o que pode ser delegado ao agente."
+        description="No diagnóstico avaliamos o fluxo de leads e o que pode ser delegado ao agente."
       />
     </SiteLayout>
   );
