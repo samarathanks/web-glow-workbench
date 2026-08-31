@@ -127,7 +127,7 @@
   }
 
   ::selection {
-    background-color: color-mix(in oklab, #02A5F0 30%, transparent);
+    background-color: color-mix(in oklab, #258E9B 32%, transparent);
     color: var(--foreground);
   }
 }
