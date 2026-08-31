@@ -96,7 +96,7 @@ function DiagnosticoPage() {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full px-7 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-brand shadow-glow hover:opacity-90 disabled:opacity-50 transition inline-flex items-center justify-center gap-2"
+                className="w-full px-7 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-cta shadow-glow-green hover:opacity-95 disabled:opacity-50 transition inline-flex items-center justify-center gap-2"
               >
                 <Send size={18} /> {sending ? "Enviando..." : "Solicitar diagnóstico"}
               </button>
