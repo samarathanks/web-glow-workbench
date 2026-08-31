@@ -1,26 +1,42 @@
 import { Link } from "@tanstack/react-router";
+import symbolAsset from "@/assets/kapptar-symbol.png.asset.json";
+import wordmarkAsset from "@/assets/kapptar-wordmark-white.png.asset.json";
 
 /**
- * Marca em tipografia (modelo anterior à aplicação da logomarca em SVG).
- * Mantém a mesma API dos outros componentes: className/variant são aceitos
- * para compatibilidade, mas a renderização é sempre tipográfica.
+ * Logomarca oficial da Kapptar.
+ * - "lockup" (padrão): símbolo K + wordmark, na horizontal.
+ * - "symbol": apenas o símbolo K.
  */
 export function Brand({
   className,
-  variant,
+  variant = "lockup",
 }: {
   className?: string;
   variant?: "lockup" | "full" | "symbol";
 }) {
-  const size = variant === "symbol" ? "text-lg" : "text-xl";
-
   return (
     <Link
       to="/"
       aria-label="Kapptar — página inicial"
-      className={`font-display font-bold tracking-tight ${size} ${className?.startsWith("h-") ? "" : (className ?? "")}`}
+      className={`inline-flex items-center gap-2.5 ${className ?? ""}`}
     >
-      kapptar<span className="text-teal">.</span>
+      <img
+        src={symbolAsset.url}
+        alt="Kapptar"
+        className="h-8 w-auto shrink-0"
+        loading="eager"
+        decoding="async"
+      />
+      {variant !== "symbol" && (
+        <img
+          src={wordmarkAsset.url}
+          alt=""
+          aria-hidden="true"
+          className="h-[15px] w-auto shrink-0"
+          loading="eager"
+          decoding="async"
+        />
+      )}
     </Link>
   );
 }
